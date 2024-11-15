@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/loginScreens/background.dart';
 import 'package:hola_app/loginScreens/customInput1.dart';
+import 'package:hola_app/loginScreens/loginWithGoogle.dart';
+import 'package:hola_app/loginScreens/textData.dart';
 import 'package:hola_app/loginScreens/validators.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -26,15 +28,25 @@ class _registorScreenState extends State<registorScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset('assets/images/register.png'),
+                Container(
+                  width: double.infinity,
+                  height: 150,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            'assets/images/register.png',
+                          ))),
+                ),
                 Text(
                   'Sign Up',
                   style: textTheme.apptextTheme.headlineLarge,
                 ),
-                Text(
-                  'Use proper information to continue',
-                  style: textTheme.apptextTheme.bodyLarge,
+                signUpHeading(),
+                const SizedBox(
+                  height: 40,
                 ),
                 inputField1(
                     controller1: fullNameController,
@@ -46,7 +58,7 @@ class _registorScreenState extends State<registorScreen> {
                     ),
                     obscureText: false),
                 const SizedBox(
-                  height: 10,
+                  height: 12,
                 ),
                 inputField1(
                     controller1: emailController,
@@ -58,7 +70,7 @@ class _registorScreenState extends State<registorScreen> {
                     ),
                     obscureText: false),
                 const SizedBox(
-                  height: 10,
+                  height: 12,
                 ),
                 inputField1(
                     controller1: passwordController,
@@ -70,7 +82,7 @@ class _registorScreenState extends State<registorScreen> {
                     ),
                     obscureText: true),
                 const SizedBox(
-                  height: 20,
+                  height: 35,
                 ),
                 ElevatedButton(
                     onPressed: () {
@@ -79,12 +91,46 @@ class _registorScreenState extends State<registorScreen> {
                             const SnackBar(
                                 content: Text('Registration Successful')));
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: const Text(
-                                'Please resolve the error in the form')));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(errorResolve())));
                       }
                     },
-                    child: Text('Create Account'))
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Create'),
+                        SizedBox(
+                          width: 10,
+                          height: 60,
+                        ),
+                        Text('Account')
+                      ],
+                    )),
+                const SizedBox(
+                  height: 15,
+                ),
+                RichText(
+                  text: privacySpan(),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  orData(),
+                  style: textTheme.apptextTheme.bodyLarge,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const googleLogin(),
+                const SizedBox(
+                  height: 15,
+                ),
+                RichText(
+                  text: haveAccount(),
+                  textAlign: TextAlign.center,
+                )
               ],
             ),
           ),

@@ -8,5 +8,5 @@ class colors {
   static const Color blackColor = Color(0xff000000);
   static const Color buttonColor = Color(0xff6C60A0);
   static const Color borderColor = Color(0xff7E7E7E);
-
+  static const Color redColor = Colors.red;
 }

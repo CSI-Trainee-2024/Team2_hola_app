@@ -6,25 +6,23 @@ class inputField1 extends StatelessWidget {
   final bool obscureText;
   final Icon? prefixIcon;
   final Icon? suffixIcon;
+  final String? Function(String?)? validators;
   const inputField1(
       {super.key,
       required this.controller1,
       required this.hintText,
       required this.obscureText,
       this.prefixIcon,
-      this.suffixIcon});
+      this.suffixIcon,
+      required this.validators
+      });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller1,
       obscureText: obscureText,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter the Username';
-        }
-        return null;
-      },
+      validator: validators,
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: prefixIcon,

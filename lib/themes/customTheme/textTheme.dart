@@ -6,37 +6,37 @@ class textTheme {
   textTheme._();
 
   static TextTheme apptextTheme = TextTheme(
-    headlineLarge: GoogleFonts.robotoMono(
+    headlineLarge: GoogleFonts.roboto(
       fontSize: 32,
       color: colors.whiteColor,
       fontWeight: FontWeight.bold
     ),
-    headlineMedium: GoogleFonts.robotoMono(
+    headlineMedium: GoogleFonts.roboto(
       fontSize: 24,
       color: colors.whiteColor,
       fontWeight: FontWeight.w700
     ),
-    headlineSmall: GoogleFonts.robotoMono(
+    headlineSmall: GoogleFonts.roboto(
       fontSize: 20,
       color: colors.whiteColor,
       fontWeight: FontWeight.w500
     ),
-    bodyLarge: GoogleFonts.robotoMono(
+    bodyLarge: GoogleFonts.roboto(
       fontSize: 18,
       color: colors.whiteColor,
       fontWeight: FontWeight.w400
     ),
-    bodyMedium: GoogleFonts.robotoMono(
+    bodyMedium: GoogleFonts.roboto(
       fontSize: 18,
       color: colors.mainColor,
       fontWeight: FontWeight.w400
     ),
-    bodySmall: GoogleFonts.robotoMono(
+    bodySmall: GoogleFonts.roboto(
       fontSize: 16,
       color: colors.whiteColor,
       fontWeight: FontWeight.w400
     ),
-    labelLarge:  GoogleFonts.robotoMono(
+    labelLarge:  GoogleFonts.roboto(
       fontSize: 14,
       color: colors.whiteColor,
       fontWeight: FontWeight.w400

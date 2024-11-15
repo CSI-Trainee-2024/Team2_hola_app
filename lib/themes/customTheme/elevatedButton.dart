@@ -8,11 +8,15 @@ class elevatedButton {
   static ElevatedButtonThemeData elevatedButtonTheme =
       ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: colors.mainColor,
+          backgroundColor: colors.buttonColor,
           foregroundColor: colors.whiteColor,
           elevation: 2.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+              color: colors.borderColor,
+              width: 1.0
+            )
           ),
           textStyle: textTheme.apptextTheme.headlineMedium,
           //padding: EdgeInsets.symmetric()

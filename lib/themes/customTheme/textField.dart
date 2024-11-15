@@ -11,11 +11,11 @@ class textField {
     hintStyle: textTheme.apptextTheme.bodyLarge,
     enabledBorder: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(width: 1,color: colors.whiteColor)
+      borderSide: BorderSide(width: 2,color: colors.whiteColor)
     ),
     focusedBorder: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(width: 1,color: colors.mainColor)
+      borderSide: BorderSide(width: 2,color: colors.buttonColor)
     ),
   );
 }

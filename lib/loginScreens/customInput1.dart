@@ -17,13 +17,19 @@ class inputField1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-         controller: controller1,
-         obscureText: obscureText,
-         decoration: InputDecoration(
-          hintText: hintText,
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-         ),
-        );
+      controller: controller1,
+      obscureText: obscureText,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter the Username';
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        hintText: hintText,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+      ),
+    );
   }
 }

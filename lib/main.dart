@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hola_app/Screens/HomeScreen.dart';
+import 'package:hola_app/loginScreens/register.dart';
 import 'package:hola_app/themes/theme.dart';
 
 void main() {
@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
-      home:const homeScreen(),
+      home: const registorScreen(),
     );
   }
 }
-

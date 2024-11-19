@@ -13,7 +13,7 @@ class elevatedButton {
           elevation: 2.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
+            side: const BorderSide(
               color: colors.borderColor,
               width: 1.0
             )

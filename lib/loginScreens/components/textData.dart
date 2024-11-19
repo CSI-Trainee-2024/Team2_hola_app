@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
+// For register screen
+
 Text signUpHeading() {
   return Text(
     'Use proper information to continue',
@@ -32,9 +34,28 @@ TextSpan privacySpan() {
 
 TextSpan haveAccount() {
   return TextSpan(
-      text: 'Already have an account?',
+      text: 'Already have an account?    ',
       style: textTheme.apptextTheme.bodyLarge,
       children: [
-        TextSpan(text: '    Sign Up', style: textTheme.apptextTheme.bodyMedium)
+        TextSpan(text: 'Sign Up', style: textTheme.apptextTheme.bodyMedium)
+      ]);
+}
+
+// For login screen
+
+Text loginHeading() {
+  return Text(
+    'Enter valid user name & password to continue',
+    style: textTheme.apptextTheme.bodySmall,
+    textAlign: TextAlign.center,
+  );
+}
+
+TextSpan notHaveAccount() {
+  return TextSpan(
+      text: "Don't have an account?  ",
+      style: textTheme.apptextTheme.bodyLarge,
+      children: [
+        TextSpan(text: 'Sign In', style: textTheme.apptextTheme.bodyMedium)
       ]);
 }

@@ -1,9 +1,13 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
-import 'package:hola_app/loginScreens/background.dart';
-import 'package:hola_app/loginScreens/customInput1.dart';
-import 'package:hola_app/loginScreens/loginWithGoogle.dart';
-import 'package:hola_app/loginScreens/textData.dart';
-import 'package:hola_app/loginScreens/validators.dart';
+import 'package:hola_app/loginScreens/components/apiFunctions.dart';
+import 'package:hola_app/loginScreens/components/background.dart';
+import 'package:hola_app/loginScreens/components/customInput1.dart';
+import 'package:hola_app/loginScreens/components/loginWithGoogle.dart';
+import 'package:hola_app/loginScreens/components/textData.dart';
+import 'package:hola_app/loginScreens/components/validators.dart';
+import 'package:hola_app/loginScreens/login.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
 class registorScreen extends StatefulWidget {
@@ -46,54 +50,62 @@ class _registorScreenState extends State<registorScreen> {
                 ),
                 signUpHeading(),
                 const SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 inputField1(
-                    controller1: fullNameController,
-                    validators: nameValidator,
-                    hintText: 'Full Name',
-                    prefixIcon: const Icon(
-                      Icons.person,
-                      size: 35,
-                    ),
-                    obscureText: false),
+                  controller1: fullNameController,
+                  validators: nameValidator,
+                  hintText: 'Full Name',
+                  prefixIcon: const Icon(
+                    Icons.person,
+                    size: 35,
+                  ),
+                  obscureText: false,
+                  keyInputType: TextInputType.name,
+                ),
                 const SizedBox(
                   height: 12,
                 ),
                 inputField1(
-                    controller1: emailController,
-                    validators: emailValidator,
-                    hintText: 'Email Address',
-                    prefixIcon: const Icon(
-                      Icons.email_outlined,
-                      size: 35,
-                    ),
-                    obscureText: false),
+                  controller1: emailController,
+                  validators: emailValidator,
+                  hintText: 'Email Address',
+                  prefixIcon: const Icon(
+                    Icons.email_outlined,
+                    size: 35,
+                  ),
+                  obscureText: false,
+                  keyInputType: TextInputType.emailAddress,
+                ),
                 const SizedBox(
                   height: 12,
                 ),
                 inputField1(
-                    controller1: passwordController,
-                    validators: passwordValidator,
-                    hintText: 'Password',
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      size: 35,
-                    ),
-                    obscureText: true),
+                  controller1: passwordController,
+                  validators: passwordValidator,
+                  hintText: 'Password',
+                  prefixIcon: const Icon(
+                    Icons.lock_outline,
+                    size: 35,
+                  ),
+                  obscureText: true,
+                  keyInputType: TextInputType.visiblePassword,
+                ),
                 const SizedBox(
                   height: 35,
                 ),
                 ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Registration Successful')));
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text(
+                                'Registration Successful'))); //data{'success}
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(errorResolve())));
                       }
+                      register(fullNameController.text, emailController.text,
+                          passwordController.text);
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -127,9 +139,15 @@ class _registorScreenState extends State<registorScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                RichText(
-                  text: haveAccount(),
-                  textAlign: TextAlign.center,
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => const loginScreen()));
+                  },
+                  child: RichText(
+                    text: haveAccount(),
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),

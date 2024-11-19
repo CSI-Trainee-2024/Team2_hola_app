@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+var baseUrl = "https://socialnetworkingsite.onrender.com";
+
 void register(String userName, email, password) async {
   try {
     http.Response response =
-        await http.post(Uri.parse('http://localhost:3000/auth/register'),
+        await http.post(Uri.parse("$baseUrl/auth/register"),
             body: jsonEncode({
               'User': {
                 'userName': userName,
@@ -21,20 +23,16 @@ void register(String userName, email, password) async {
       print('failed:${response.statusCode}');
     }
   } catch (e) {
-    print(e.toString()); 
+    print(e.toString());
   }
 }
-
 
 void login(String email, password) async {
   try {
     http.Response response =
-        await http.post(Uri.parse('http://localhost:3000/auth/login'),
+        await http.post(Uri.parse("$baseUrl/auth/login"),
             body: jsonEncode({
-              'User': {
-                'email': email,
-                'password': password
-              }
+              'User': {'email': email, 'password': password}
             }));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
@@ -44,6 +42,6 @@ void login(String email, password) async {
       print('failed:${response.statusCode}');
     }
   } catch (e) {
-    print(e.toString()); 
+    print(e.toString());
   }
 }

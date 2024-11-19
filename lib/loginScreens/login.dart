@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hola_app/loginScreens/components/apiFunctions.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
 import 'package:hola_app/loginScreens/components/loginWithGoogle.dart';
@@ -93,6 +94,8 @@ class _loginScreenState extends State<loginScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Login failed')));
                           }
+                          login(loginMail.text.toString(),
+                              loginPassword.text.toString());
                         },
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,

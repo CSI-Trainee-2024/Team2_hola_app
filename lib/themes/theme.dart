@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/themes/appBar.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/elevatedButton.dart';
 import 'package:hola_app/themes/customTheme/navigation.dart';
@@ -14,5 +15,6 @@ class AppTheme {
       textTheme: textTheme.apptextTheme,
       inputDecorationTheme: textField.textFieldTheme,
       elevatedButtonTheme: elevatedButton.elevatedButtonTheme,
-      bottomNavigationBarTheme: navigationTheme.navigationThemeData);
+      bottomNavigationBarTheme: navigationTheme.navigationThemeData,
+      appBarTheme: appBarTheme.appBarThemeData);
 }

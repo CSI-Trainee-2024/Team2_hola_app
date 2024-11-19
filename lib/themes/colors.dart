@@ -10,5 +10,6 @@ class colors {
   static const Color borderColor = Color(0xff7E7E7E);
   static const Color redColor = Colors.red;
   static const Color transparent = Colors.transparent;
- // static const LinearGradient iconGradient = LinearGradient(colors: [Color(0xffE33629),Color(0xffF8BD00),Color(0xff319F43),Color(0xff587DBD)]);
+  static const Color greyColor = Color(0xff282828);
+  // static const LinearGradient iconGradient = LinearGradient(colors: [Color(0xffE33629),Color(0xffF8BD00),Color(0xff319F43),Color(0xff587DBD)]);
 }

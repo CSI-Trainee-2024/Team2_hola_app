@@ -104,8 +104,8 @@ class _registorScreenState extends State<registorScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(errorResolve())));
                       }
-                      register(fullNameController.text, emailController.text,
-                          passwordController.text);
+                      register(fullNameController.text.toString(), emailController.text.toString(),
+                          passwordController.text.toString());
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,

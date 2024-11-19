@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/Screens/navigationBar.dart';
 import 'package:hola_app/loginScreens/login.dart';
 import 'package:hola_app/loginScreens/register.dart';
 import 'package:hola_app/themes/theme.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
-      home:const registorScreen(),
+      home: navigationBar(),
     );
   }
 }

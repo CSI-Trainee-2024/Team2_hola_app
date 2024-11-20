@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/allPost.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/following.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/notification.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
@@ -61,7 +63,8 @@ class _homeScreenState extends State<homeScreen> {
               ]),
         ),
         body: TabBarView(children: [
-          
+          alluserPost(),
+          followingPost()
         ]),
       ),
     ));

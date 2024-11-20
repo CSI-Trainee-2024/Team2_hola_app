@@ -41,5 +41,15 @@ class textTheme {
       color: colors.whiteColor,
       fontWeight: FontWeight.w400
     ),
+    labelMedium: GoogleFonts.roboto(
+      fontSize: 20,
+      color: colors.mainColor,
+      fontWeight: FontWeight.w700
+    ),
+    labelSmall:  GoogleFonts.roboto(
+      fontSize: 12,
+      color: colors.whiteColor,
+      fontWeight: FontWeight.w400,
+    ),
     );
 }

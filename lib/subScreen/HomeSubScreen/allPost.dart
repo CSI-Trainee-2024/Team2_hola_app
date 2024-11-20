@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/components/likeShareComment.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/subScreen/demoData.dart';
 import 'package:hola_app/themes/colors.dart';
@@ -87,7 +88,8 @@ class _alluserPostState extends State<alluserPost> {
                                       width: double.infinity,
                                       fit: BoxFit.cover,
                                     ),
-                                  )
+                                  ),
+                                  likecommentShare()
                                 ],
                               ),
                             ),
@@ -97,6 +99,5 @@ class _alluserPostState extends State<alluserPost> {
                 }))
       ],
     );
-    ;
   }
 }

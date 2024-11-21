@@ -51,49 +51,47 @@ class _profileScreenState extends State<profileScreen> {
               'I am delighted to introduce myself as a \nprofressional artist'),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Expanded(
-              child: SizedBox(
-                width: MediaQuery.sizeOf(context).width,
-                height: 100,
-                child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          const SizedBox(
-                            width: 35,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                data[index],
-                                style: textTheme.apptextTheme.bodyLarge,
-                              ),
-                              Text(
-                                dataName[index],
-                                style: textTheme.apptextTheme.labelLarge,
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 35,
-                          ),
-                        ],
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return const VerticalDivider(
-                        color: colors.whiteColor,
-                        indent: 20,
-                        endIndent: 20,
-                        thickness: 1,
-                        //width: 50,
-                      );
-                    },
-                    itemCount: 3),
-              ),
+            child: SizedBox(
+              width: MediaQuery.sizeOf(context).width,
+              height: 100,
+              child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        const SizedBox(
+                          width: 35,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              data[index],
+                              style: textTheme.apptextTheme.bodyLarge,
+                            ),
+                            Text(
+                              dataName[index],
+                              style: textTheme.apptextTheme.labelLarge,
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 35,
+                        ),
+                      ],
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const VerticalDivider(
+                      color: colors.whiteColor,
+                      indent: 20,
+                      endIndent: 20,
+                      thickness: 1,
+                      //width: 50,
+                    );
+                  },
+                  itemCount: 3),
             ),
           ),
           Row(

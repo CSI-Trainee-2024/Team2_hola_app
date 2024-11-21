@@ -9,21 +9,18 @@ class textField {
     prefixIconColor: colors.mainColor,
     suffixIconColor: colors.whiteColor,
     hintStyle: textTheme.apptextTheme.bodyLarge,
+    labelStyle: textTheme.apptextTheme.bodyMedium,
     enabledBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(width: 2,color: colors.whiteColor)
-    ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(width: 2, color: colors.whiteColor)),
     focusedBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(width: 2,color: colors.buttonColor)
-    ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(width: 2, color: colors.buttonColor)),
     errorBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(width: 2,color: colors.redColor)
-    ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(width: 2, color: colors.redColor)),
     focusedErrorBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(width: 2,color: colors.buttonColor)
-    ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(width: 2, color: colors.buttonColor)),
   );
 }

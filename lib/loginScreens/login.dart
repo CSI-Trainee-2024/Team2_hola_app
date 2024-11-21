@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hola_app/Screens/navigationBar.dart';
 import 'package:hola_app/loginScreens/components/apiFunctions.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
@@ -122,7 +123,11 @@ class _loginScreenState extends State<loginScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        //Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => navigationBar()));
                       },
                       child: RichText(
                         text: notHaveAccount(),

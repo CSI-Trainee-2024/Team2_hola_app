@@ -16,11 +16,11 @@ class _navigationBarState extends State<navigationBar> {
   int currentIndex = 0;
 
   final List screens = [
-    homeScreen(),
-    exploreScreen(),
-    reelScreen(),
-    mapScreen(),
-    profileScreen(),
+    const homeScreen(),
+    const exploreScreen(),
+    const reelScreen(),
+    const mapScreen(),
+    const profileScreen(),
   ];
 
   void itemTapped(int index) {

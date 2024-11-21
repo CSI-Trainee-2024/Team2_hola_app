@@ -18,6 +18,70 @@ class _followingPostState extends State<followingPost> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          children: [
+            SizedBox(
+              width: 20,
+            ),
+            Text(
+              'Live',
+              style: textTheme.apptextTheme.bodyLarge,
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          height: 120,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: followList.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border:
+                              Border.all(color: colors.mainColor, width: 2)),
+                      child: CircleAvatar(
+                        radius: 38,
+                        backgroundImage: NetworkImage(
+                            followList[index].downloadUrl.toString()),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      //followList[index].author.toString(),
+                      'Paul',
+                      style: textTheme.apptextTheme.labelSmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+        Row(
+          children: [
+            const SizedBox(
+              width: 20,
+            ),
+            Text(
+              'Following',
+              style: textTheme.apptextTheme.bodyLarge,
+            ),
+          ],
+        ),
         Expanded(
             child: FutureBuilder(
                 future: followApi(),

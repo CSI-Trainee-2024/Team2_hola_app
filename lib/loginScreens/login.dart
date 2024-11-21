@@ -88,15 +88,24 @@ class _loginScreenState extends State<loginScreen> {
                     ElevatedButton(
                         onPressed: () {
                           if (loginKey.currentState?.validate() ?? false) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Login Successfully')));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                    content: Text('Success'
+                                        //data['message']
+                                        )));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Login failed')));
                           }
                           login(loginMail.text.toString(),
                               loginPassword.text.toString());
+
+                          // if (data['success']! == true) {
+                          //   Navigator.pushReplacement(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) => navigationBar()));
+                          // }
                         },
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,

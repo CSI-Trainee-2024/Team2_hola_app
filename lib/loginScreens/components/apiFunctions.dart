@@ -3,20 +3,21 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 var baseUrl = "https://socialnetworkingsite.onrender.com";
+var data;
 
 void register(String userName, email, password) async {
   try {
-    http.Response response =
-        await http.post(Uri.parse("$baseUrl/auth/register"),
-            body: jsonEncode({
-              'User': {
-                'userName': userName,
-                'email': email,
-                'password': password
-              }
-            }));
+    http.Response response = await http.post(
+      Uri.parse("$baseUrl/auth/register"),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'userName': userName,
+        'email': email,
+        'password': password,
+      }),
+    );
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+      data = jsonDecode(response.body.toString());
       print(data);
       print('Register successfully');
     } else {
@@ -29,19 +30,21 @@ void register(String userName, email, password) async {
 
 void login(String email, password) async {
   try {
-    http.Response response =
-        await http.post(Uri.parse("$baseUrl/auth/login"),
-            body: jsonEncode({
-              'User': {'email': email, 'password': password}
-            }));
+    http.Response response = await http.post(Uri.parse("$baseUrl/auth/login"),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          {'email': email, 'password': password}
+        }));
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+      data = jsonDecode(response.body.toString());
       print(data);
       print('Login successfully');
     } else {
+      data = {'success': false, 'message': 'Invalid credentials'};
       print('failed:${response.statusCode}');
     }
   } catch (e) {
+    data = {'success': false, 'message': e.toString()};
     print(e.toString());
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hola_app/Screens/navigationBar.dart';
 import 'package:hola_app/loginScreens/components/apiFunctions.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
@@ -36,7 +37,7 @@ class _registorScreenState extends State<registorScreen> {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 150,
+                  height: 140,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
@@ -50,7 +51,7 @@ class _registorScreenState extends State<registorScreen> {
                 ),
                 signUpHeading(),
                 const SizedBox(
-                  height: 30,
+                  height: 25,
                 ),
                 inputField1(
                   controller1: fullNameController,
@@ -92,20 +93,30 @@ class _registorScreenState extends State<registorScreen> {
                   keyInputType: TextInputType.visiblePassword,
                 ),
                 const SizedBox(
-                  height: 35,
+                  height: 25,
                 ),
                 ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text(
-                                'Registration Successful'))); //data{'success}
+                            content: Text('success'
+                                //data['message']
+                                )));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(errorResolve())));
                       }
-                      register(fullNameController.text.toString(), emailController.text.toString(),
+                      register(
+                          fullNameController.text.toString(),
+                          emailController.text.toString(),
                           passwordController.text.toString());
+
+                      // if (data['success']! == true) {
+                      //   Navigator.pushReplacement(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //           builder: (context) => navigationBar()));
+                      // }
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -136,13 +147,15 @@ class _registorScreenState extends State<registorScreen> {
                   height: 15,
                 ),
                 const googleLogin(),
-                const SizedBox(
-                  height: 15,
-                ),
+                // const SizedBox(
+                //   height: 15,
+                // ),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => const loginScreen()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const loginScreen()));
                   },
                   child: RichText(
                     text: haveAccount(),

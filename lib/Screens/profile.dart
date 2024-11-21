@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
+import 'package:hola_app/subScreen/profile/editProfile.dart';
 import 'package:hola_app/subScreen/profile/mainProfile.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
@@ -99,12 +100,15 @@ class _profileScreenState extends State<profileScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               gestureDetector(
-                onPressed: () {},
-                textData: 'Message',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => editProfile()));
+                },
+                textData: 'Edit profile',
               ),
               gestureDetector(
                 onPressed: () {},
-                textData: 'Following',
+                textData: 'Share profile',
               )
             ],
           ),

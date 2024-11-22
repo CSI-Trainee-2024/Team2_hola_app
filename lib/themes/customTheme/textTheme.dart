@@ -7,49 +7,30 @@ class textTheme {
 
   static TextTheme apptextTheme = TextTheme(
     headlineLarge: GoogleFonts.roboto(
-      fontSize: 32,
-      color: colors.whiteColor,
-      fontWeight: FontWeight.bold
-    ),
+        fontSize: 32, color: colors.whiteColor, fontWeight: FontWeight.bold),
     headlineMedium: GoogleFonts.roboto(
-      fontSize: 24,
-      color: colors.whiteColor,
-      fontWeight: FontWeight.w700
-    ),
+        fontSize: 24, color: colors.whiteColor, fontWeight: FontWeight.w700),
     headlineSmall: GoogleFonts.roboto(
-      fontSize: 20,
-      color: colors.whiteColor,
-      fontWeight: FontWeight.w500
-    ),
+        fontSize: 20, color: colors.whiteColor, fontWeight: FontWeight.w500),
     bodyLarge: GoogleFonts.roboto(
-      fontSize: 18,
-      color: colors.whiteColor,
-      fontWeight: FontWeight.w400
-    ),
+        fontSize: 18, color: colors.whiteColor, fontWeight: FontWeight.w400),
     bodyMedium: GoogleFonts.roboto(
-      fontSize: 18,
-      color: colors.mainColor,
-      fontWeight: FontWeight.w400
-    ),
+        fontSize: 18, color: colors.mainColor, fontWeight: FontWeight.w400),
     bodySmall: GoogleFonts.roboto(
-      fontSize: 16,
-      color: colors.whiteColor,
-      fontWeight: FontWeight.w400
-    ),
-    labelLarge:  GoogleFonts.roboto(
-      fontSize: 14,
-      color: colors.whiteColor,
-      fontWeight: FontWeight.w400
-    ),
+        fontSize: 16, color: colors.whiteColor, fontWeight: FontWeight.w400),
+    labelLarge: GoogleFonts.roboto(
+        fontSize: 14, color: colors.whiteColor, fontWeight: FontWeight.w400),
     labelMedium: GoogleFonts.roboto(
-      fontSize: 20,
-      color: colors.mainColor,
-      fontWeight: FontWeight.w700
-    ),
-    labelSmall:  GoogleFonts.roboto(
+        fontSize: 20, color: colors.mainColor, fontWeight: FontWeight.w700),
+    labelSmall: GoogleFonts.roboto(
       fontSize: 12,
       color: colors.whiteColor,
       fontWeight: FontWeight.w400,
     ),
-    );
+    titleLarge: GoogleFonts.roboto(
+      fontSize: 18,
+      color: Colors.grey,
+      fontWeight: FontWeight.w700,
+    ),
+  );
 }

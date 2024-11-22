@@ -1,0 +1,126 @@
+import 'dart:io';
+import 'dart:js_interop';
+
+import 'package:flutter/material.dart';
+import 'package:hola_app/Screens/HomeScreen.dart';
+import 'package:hola_app/Screens/navigationBar.dart';
+import 'package:hola_app/subScreen/createPostSub/postCreated.dart';
+import 'package:hola_app/themes/colors.dart';
+import 'package:hola_app/themes/customTheme/textTheme.dart';
+import 'package:image_picker/image_picker.dart';
+
+class createPostScreen extends StatefulWidget {
+  const createPostScreen({super.key});
+
+  @override
+  State<createPostScreen> createState() => createPostScreenState();
+}
+
+class createPostScreenState extends State<createPostScreen> {
+  final TextEditingController postController = TextEditingController();
+  final TextEditingController captionController = TextEditingController();
+
+
+  File? selectedImage;
+  Future<void> pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        selectedImage = File(pickedFile.path);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'CREATE POST',
+          style: textTheme.apptextTheme.bodyLarge,
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => navigationBar()));
+            },
+            icon: const Icon(Icons.arrow_back)),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: captionController,
+                maxLines: 2,
+                decoration: const InputDecoration(
+                  hintText: 'Add a caption...',
+                ),
+              ),
+              const SizedBox(height: 20),
+              selectedImage != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.file(
+                        selectedImage!,
+                        height: 200,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : Container(
+                      height: 200,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: colors.greyColor),
+                      child: Center(
+                        child: Text(
+                          'Select a Image',
+                          style: textTheme.apptextTheme.titleLarge,
+                        ),
+                      ),
+                    ),
+              TextButton.icon(
+                onPressed: pickImage,
+                icon: const Icon(Icons.image),
+                label: const Text('Upload Image'),
+              ),
+              const SizedBox(height: 10),
+              // Post Content TextField
+              TextField(
+                controller: postController,
+                maxLines: 2,
+                decoration: const InputDecoration(
+                  hintText: 'What\'s on your mind?',
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  if (postController.text.isNotEmpty || selectedImage != null) {
+                    setState(() {
+                      posts.add({
+                        'text': postController.text,
+                        'caption': captionController.text,
+                        'image': selectedImage,
+                      });
+                    });
+                    postController.clear();
+                    captionController.clear();
+                    selectedImage = null;
+                  }
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>postCreated()));
+                },
+                child: const Text('Post'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ));
+  }
+}

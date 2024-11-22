@@ -26,7 +26,7 @@ class googleLogin extends StatelessWidget {
             //   FontAwesomeIcons.google,
             //   color: Color.fromARGB(255, 249, 144, 109),
             // ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text(

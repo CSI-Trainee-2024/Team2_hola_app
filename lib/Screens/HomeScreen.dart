@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/allPost.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/chatting/UserChat.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/following.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/notification.dart';
 import 'package:hola_app/themes/colors.dart';
@@ -36,7 +37,12 @@ class _homeScreenState extends State<homeScreen> {
             const SizedBox(
               width: 30,
             ),
-            const Icon(Icons.message_outlined),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => userChats()));
+                },
+                icon: const Icon(Icons.message_outlined)),
             const SizedBox(
               width: 15,
             )
@@ -62,10 +68,7 @@ class _homeScreenState extends State<homeScreen> {
                 )
               ]),
         ),
-        body: TabBarView(children: [
-          alluserPost(),
-          followingPost()
-        ]),
+        body: TabBarView(children: [alluserPost(), followingPost()]),
       ),
     ));
   }

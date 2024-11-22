@@ -1,6 +1,4 @@
 import 'dart:io';
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:hola_app/Screens/HomeScreen.dart';
 import 'package:hola_app/Screens/navigationBar.dart';
@@ -19,7 +17,6 @@ class createPostScreen extends StatefulWidget {
 class createPostScreenState extends State<createPostScreen> {
   final TextEditingController postController = TextEditingController();
   final TextEditingController captionController = TextEditingController();
-
 
   File? selectedImage;
   Future<void> pickImage() async {
@@ -102,18 +99,23 @@ class createPostScreenState extends State<createPostScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (postController.text.isNotEmpty || selectedImage != null) {
-                    setState(() {
-                      posts.add({
-                        'text': postController.text,
-                        'caption': captionController.text,
-                        'image': selectedImage,
-                      });
-                    });
+                    setState(
+                      () {
+                        posts.add({
+                          'text': postController.text,
+                          'caption': captionController.text,
+                          'image': selectedImage,
+                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => postCreated()));
+                      },
+                    );
                     postController.clear();
                     captionController.clear();
                     selectedImage = null;
                   }
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>postCreated()));
                 },
                 child: const Text('Post'),
               ),

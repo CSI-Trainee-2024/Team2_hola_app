@@ -98,10 +98,11 @@ class _registorScreenState extends State<registorScreen> {
                 ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text('success'
-                                //data['message']
-                                )));
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                                content: Text('success'
+                                    //data['message']
+                                    )));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(errorResolve())));
@@ -111,12 +112,12 @@ class _registorScreenState extends State<registorScreen> {
                           emailController.text.toString(),
                           passwordController.text.toString());
 
-                      // if (data['success']! == true) {
-                      //   Navigator.pushReplacement(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //           builder: (context) => navigationBar()));
-                      // }
+                      if (data['success']! == true) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => navigationBar()));
+                      }
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,

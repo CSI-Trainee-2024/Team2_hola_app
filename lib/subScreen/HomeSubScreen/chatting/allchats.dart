@@ -39,6 +39,8 @@ class _allchatState extends State<allchat> {
                       itemCount: postList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
+                          //horizontalTitleGap: 10,
+                          minVerticalPadding: 20,
                           onTap: () {
                             Navigator.push(
                                 context,

@@ -3,6 +3,7 @@ import 'package:hola_app/themes/appBar.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/elevatedButton.dart';
 import 'package:hola_app/themes/customTheme/navigation.dart';
+import 'package:hola_app/themes/customTheme/searchBar.dart';
 import 'package:hola_app/themes/customTheme/textField.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -16,5 +17,6 @@ class AppTheme {
       inputDecorationTheme: textField.textFieldTheme,
       elevatedButtonTheme: elevatedButton.elevatedButtonTheme,
       bottomNavigationBarTheme: navigationTheme.navigationThemeData,
+      searchBarTheme: searchbar.searchBarThemeData,
       appBarTheme: appBarTheme.appBarThemeData);
 }

@@ -32,5 +32,15 @@ class textTheme {
       color: Colors.grey,
       fontWeight: FontWeight.w700,
     ),
+    titleMedium: GoogleFonts.roboto(
+      fontSize: 16,
+      color: colors.whiteColor.withOpacity(0.5),
+      fontWeight: FontWeight.w400,
+    ),
+    titleSmall: GoogleFonts.roboto(
+      fontSize: 14,
+      color: colors.blackColor,
+      fontWeight: FontWeight.w400,
+    ),
   );
 }

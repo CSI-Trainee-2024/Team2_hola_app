@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hola_app/subScreen/api/followingApi.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/chatting/chatSection.dart';
+import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -17,7 +18,7 @@ class _allchatState extends State<allchat> {
       children: [
         Expanded(
           child: FutureBuilder(
-              future: followApi(),
+              future: getPostApi(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return const Column(
@@ -35,12 +36,34 @@ class _allchatState extends State<allchat> {
                   );
                 } else {
                   return ListView.builder(
-                      itemCount: followList.length,
+                      itemCount: postList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          leading: Text(
-                            followList[index].author.toString(),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChatScreen()));
+                          },
+                          leading: CircleAvatar(
+                            radius: 40,
+                            backgroundImage: NetworkImage(
+                                postList[index].downloadUrl.toString()),
+                          ),
+                          title: Text(
+                            postList[index].author.toString(),
                             style: textTheme.apptextTheme.bodyLarge,
+                          ),
+                          subtitle: Text(
+                            'How was the day?',
+                            style: textTheme.apptextTheme.titleMedium,
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(
+                              Icons.camera_enhance,
+                              color: colors.whiteColor,
+                            ),
+                            onPressed: () {},
                           ),
                         );
                       });

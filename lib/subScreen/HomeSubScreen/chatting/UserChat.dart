@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/chatting/allchats.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -25,7 +26,7 @@ class _userChatsState extends State<userChats> {
                 IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
                 IconButton(onPressed: () {}, icon: const Icon(Icons.person_add))
               ],
-              bottom: const TabBar(
+              bottom: TabBar(
                 isScrollable: true,
                 indicatorColor: colors.mainColor,
                 indicatorWeight: 4,
@@ -34,6 +35,7 @@ class _userChatsState extends State<userChats> {
                     color: colors.mainColor),*/
                 unselectedLabelColor: colors.whiteColor,
                 labelColor: colors.mainColor,
+                labelStyle: textTheme.apptextTheme.bodyMedium,
                 tabs: [
                   Tab(
                     text: "All",
@@ -55,9 +57,7 @@ class _userChatsState extends State<userChats> {
             ),
             body: const TabBarView(
               children: [
-                Center(
-                  child: Text('All users'),
-                ),
+                allchat(),
                 Center(
                   child: Text('Unread Chats'),
                 ),

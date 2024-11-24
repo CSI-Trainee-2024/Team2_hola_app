@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/Screens/HomeScreen.dart';
 import 'package:hola_app/Screens/explore.dart';
-import 'package:hola_app/Screens/map.dart';
 import 'package:hola_app/Screens/profile.dart';
 import 'package:hola_app/Screens/createPost.dart';
+import 'package:hola_app/Screens/reels.dart';
 
 class navigationBar extends StatefulWidget {
   navigationBar({super.key});
@@ -19,7 +19,7 @@ class _navigationBarState extends State<navigationBar> {
     const homeScreen(),
     const exploreScreen(),
     const createPostScreen(),
-    const mapScreen(),
+    const reelPage(),
     const profileScreen(),
   ];
 

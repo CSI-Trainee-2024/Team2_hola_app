@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/Screens/HomeScreen.dart';
 import 'package:hola_app/Screens/navigationBar.dart';
+import 'package:hola_app/Screens/reels.dart';
 import 'package:hola_app/loginScreens/login.dart';
 import 'package:hola_app/loginScreens/register.dart';
+import 'package:hola_app/subScreen/reels/allReels.dart';
 import 'package:hola_app/themes/theme.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
-      home: registorScreen(),
+      home: const registorScreen(),
     );
   }
 }

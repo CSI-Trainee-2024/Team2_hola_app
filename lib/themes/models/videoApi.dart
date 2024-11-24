@@ -1,4 +1,4 @@
-class videpapi {
+class allVideos {
   String? id;
   String? title;
   String? thumbnailUrl;
@@ -11,7 +11,7 @@ class videpapi {
   String? subscriber;
   bool? isLive;
 
-  videpapi(
+  allVideos(
       {this.id,
       this.title,
       this.thumbnailUrl,
@@ -24,7 +24,7 @@ class videpapi {
       this.subscriber,
       this.isLive});
 
-  videpapi.fromJson(Map<String, dynamic> json) {
+  allVideos.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     thumbnailUrl = json['thumbnailUrl'];

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/api/exploreApi.dart';
+import 'package:hola_app/themes/colors.dart';
+import 'package:hola_app/themes/customTheme/textTheme.dart';
 
 class trendingPage extends StatefulWidget {
   const trendingPage({super.key});
@@ -10,6 +13,49 @@ class trendingPage extends StatefulWidget {
 class _trendingPageState extends State<trendingPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Expanded(
+            child: FutureBuilder(
+          future: getExploreApi(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(
+                    color: colors.mainColor,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Loading...',
+                    style: textTheme.apptextTheme.bodyLarge,
+                  )
+                ],
+              );
+            } else {
+              return GridView.builder(
+                  itemCount: exploreList.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.5,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10),
+                  itemBuilder: (context, index) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.network(
+                        fit: BoxFit.cover,
+                        exploreList[index].downloadUrl.toString()
+                      ),
+                    );
+                  });
+            }
+          },
+        ))
+      ],
+    );
   }
 }

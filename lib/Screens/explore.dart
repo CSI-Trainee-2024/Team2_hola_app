@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
+import 'package:hola_app/subScreen/explore/community.dart';
+import 'package:hola_app/subScreen/explore/trending.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -54,9 +56,11 @@ class _exploreScreenState extends State<exploreScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Expanded(
+               const Expanded(
                 child: TabBarView(
-                  children: [Text('tab'), Text('tab')]))
+                  children: [
+                    trendingPage(), 
+                    communityPage()]))
             ],
           ),
         ),

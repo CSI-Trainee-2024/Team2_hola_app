@@ -36,7 +36,7 @@ class _userChatsState extends State<userChats> {
                 unselectedLabelColor: colors.whiteColor,
                 labelColor: colors.mainColor,
                 labelStyle: textTheme.apptextTheme.bodyMedium,
-                tabs: [
+                tabs: const [
                   Tab(
                     text: "All",
                   ),

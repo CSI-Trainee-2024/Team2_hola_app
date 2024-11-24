@@ -67,7 +67,7 @@ class ChatScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/backgroundChat.png'))),
+                image: AssetImage('assets/images/chatback.png'))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

@@ -45,15 +45,15 @@ class _reelItemsState extends State<reelItems> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return /*Container(
       color: colors.greyColor,
       child: Center(
         child: videoPlayerController.value.isInitialized
             ? Chewie(controller: chewieController!)
             : const CircularProgressIndicator(),
       ),
-    );
-    /*
+    );*/
+    
     Container(
       color: colors.greyColor,
       child: Center(
@@ -80,6 +80,5 @@ class _reelItemsState extends State<reelItems> {
         ),
       ),
     );
-    */ 
   }
 }

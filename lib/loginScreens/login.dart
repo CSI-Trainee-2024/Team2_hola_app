@@ -8,6 +8,7 @@ import 'package:hola_app/loginScreens/components/customInput1.dart';
 import 'package:hola_app/loginScreens/components/loginWithGoogle.dart';
 import 'package:hola_app/loginScreens/components/textData.dart';
 import 'package:hola_app/loginScreens/components/validators.dart';
+import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
 class loginScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class _loginScreenState extends State<loginScreen> {
   final loginKey = GlobalKey<FormState>();
   final loginMail = TextEditingController();
   final loginPassword = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -86,28 +88,51 @@ class _loginScreenState extends State<loginScreen> {
                       height: 35,
                     ),
                     ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          setState(() {
+                            isLoading = true;
+                          });
                           if (loginKey.currentState?.validate() ?? false) {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                                     content: Text('Success'
                                         //data['message']
                                         )));
+
+                            await login(loginMail.text.toString(),
+                                loginPassword.text.toString());
+
+                            setState(() {
+                              isLoading = false;
+                            });
+
+                            if (data['success'] == true && data != null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => navigationBar()));
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(
+                                          'Login Failed : ${data['message']}')));
+                            }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Login failed')));
+                                 SnackBar(content: Text(errorResolve())));
                           }
-                          login(loginMail.text.toString(),
-                              loginPassword.text.toString());
-
-                          // if (data['success']! == true) {
-                          //   Navigator.pushReplacement(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => navigationBar()));
-                          // }
                         },
-                        child: const Row(
+                        child:isLoading
+                        ? const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 13, bottom: 13),
+                              child: CircularProgressIndicator(color: colors.whiteColor,),
+                            ),
+                          ],
+                        )
+                        : const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
@@ -115,7 +140,8 @@ class _loginScreenState extends State<loginScreen> {
                               child: Text('Login'),
                             ),
                           ],
-                        )),
+                        )
+                        ),
                     const SizedBox(
                       height: 15,
                     ),

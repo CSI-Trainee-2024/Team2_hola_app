@@ -96,7 +96,7 @@ class _accountCenterState extends State<accountCenter> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(

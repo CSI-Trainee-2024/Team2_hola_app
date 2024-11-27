@@ -9,6 +9,7 @@ import 'package:hola_app/loginScreens/components/loginWithGoogle.dart';
 import 'package:hola_app/loginScreens/components/textData.dart';
 import 'package:hola_app/loginScreens/components/validators.dart';
 import 'package:hola_app/loginScreens/login.dart';
+import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
 class registorScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _registorScreenState extends State<registorScreen> {
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -96,30 +98,53 @@ class _registorScreenState extends State<registorScreen> {
                   height: 25,
                 ),
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
                       if (formKey.currentState?.validate() ?? false) {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                                 content: Text('success'
                                     //data['message']
                                     )));
+                        await register(
+                            fullNameController.text.toString(),
+                            emailController.text.toString(),
+                            passwordController.text.toString());
+
+                        setState(() {
+                          isLoading = false;
+                        });
+
+                        if (data['success'] == true && data != null) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => navigationBar()));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                  'Registration failed : ${data['message']}')));
+                        }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(errorResolve())));
                       }
-                      register(
-                          fullNameController.text.toString(),
-                          emailController.text.toString(),
-                          passwordController.text.toString());
-
-                      if (data['success']! == true) {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => navigationBar()));
-                      }
                     },
-                    child: const Row(
+                    child: isLoading 
+                    ? const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Creating'),
+                        SizedBox(
+                          width: 10,
+                          height: 60,
+                        ),
+                        CircularProgressIndicator(color: colors.whiteColor,),
+                      ],
+                    )
+                    : const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Create'),

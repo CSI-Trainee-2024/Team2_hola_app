@@ -59,3 +59,13 @@ TextSpan notHaveAccount() {
         TextSpan(text: 'Sign In', style: textTheme.apptextTheme.bodyMedium)
       ]);
 }
+
+// For forgot password
+
+Text forgotHeading() {
+  return Text(
+    "Don't worry it happens. Please enter the Email address associated with your account",
+    style: textTheme.apptextTheme.bodySmall,
+    textAlign: TextAlign.center,
+  );
+}

@@ -8,6 +8,7 @@ import 'package:hola_app/loginScreens/components/customInput1.dart';
 import 'package:hola_app/loginScreens/components/loginWithGoogle.dart';
 import 'package:hola_app/loginScreens/components/textData.dart';
 import 'package:hola_app/loginScreens/components/validators.dart';
+import 'package:hola_app/loginScreens/forgetPassword.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -72,15 +73,19 @@ class _loginScreenState extends State<loginScreen> {
                       ),
                       keyInputType: TextInputType.visiblePassword,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          'Forgot Password?',
-                          style: textTheme.apptextTheme.bodyMedium,
+                        TextButton(
+                          child: Text('Forgot Password?',
+                              style: textTheme.apptextTheme.bodyMedium),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Forgetpassword(),
+                                ));
+                          },
                         ),
                       ],
                     ),
@@ -119,29 +124,32 @@ class _loginScreenState extends State<loginScreen> {
                             }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                                 SnackBar(content: Text(errorResolve())));
+                                SnackBar(content: Text(errorResolve())));
                           }
                         },
-                        child:isLoading
-                        ? const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: 13, bottom: 13),
-                              child: CircularProgressIndicator(color: colors.whiteColor,),
-                            ),
-                          ],
-                        )
-                        : const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: 13, bottom: 13),
-                              child: Text('Login'),
-                            ),
-                          ],
-                        )
-                        ),
+                        child: isLoading
+                            ? const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 13, bottom: 13),
+                                    child: CircularProgressIndicator(
+                                      color: colors.whiteColor,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 13, bottom: 13),
+                                    child: Text('Login'),
+                                  ),
+                                ],
+                              )),
                     const SizedBox(
                       height: 15,
                     ),

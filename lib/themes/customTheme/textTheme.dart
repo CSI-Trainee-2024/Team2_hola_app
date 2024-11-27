@@ -47,5 +47,10 @@ class textTheme {
       color: colors.chatDark,
       fontWeight: FontWeight.w400,
     ),
+    displayMedium:  GoogleFonts.roboto(
+      fontSize: 14,
+      color: Colors.grey,
+      fontWeight: FontWeight.w400,
+    ),
   );
 }

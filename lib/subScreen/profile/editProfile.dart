@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
-import 'package:hola_app/loginScreens/register.dart';
+import 'package:hola_app/subScreen/Settings/mainSettings.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -43,10 +43,12 @@ class _editProfileState extends State<editProfile> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => registorScreen()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>mainSettings()));
               },
-              icon: Icon(Icons.logout))
+              icon: const Icon(Icons.settings))
         ],
       ),
       body: Padding(

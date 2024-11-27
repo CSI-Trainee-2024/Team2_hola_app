@@ -44,7 +44,7 @@ class _navigationBarState extends State<navigationBar> {
                 icon: Icon(Icons.explore), label: 'Explore'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.add_box_outlined), label: 'Reels'),
-            BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Maps'),
+            BottomNavigationBarItem(icon: Icon(Icons.video_library_rounded), label: 'Reels'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
           ],
           currentIndex: currentIndex,

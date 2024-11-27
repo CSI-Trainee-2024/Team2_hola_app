@@ -69,3 +69,11 @@ Text forgotHeading() {
     textAlign: TextAlign.center,
   );
 }
+
+Text otpHeading() {
+  return Text(
+    "Please Enter the OTP send to your Email address",
+    style: textTheme.apptextTheme.bodySmall,
+    textAlign: TextAlign.center,
+  );
+}

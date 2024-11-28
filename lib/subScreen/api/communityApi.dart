@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 List<Community> communtiyList = [];
 
 Future<List<Community>> communityApi() async {
-  final response = await http
+  try {
+     final response = await http
       .get(Uri.parse("https://socialnetworkingsite.onrender.com/users"));
   var data = jsonDecode(response.body.toString());
 
@@ -17,6 +18,9 @@ Future<List<Community>> communityApi() async {
     }
     return communtiyList;
   } else {
-    return communtiyList;
+    throw Exception('Failed to load all user');
+  }
+  } catch (e) {
+    throw Exception('Error fetching the user:$e');
   }
 }

@@ -52,5 +52,7 @@ class textTheme {
       color: Colors.grey,
       fontWeight: FontWeight.w400,
     ),
+    displaySmall: GoogleFonts.roboto(
+        fontSize: 12, color: colors.mainColor, fontWeight: FontWeight.w700),
   );
 }

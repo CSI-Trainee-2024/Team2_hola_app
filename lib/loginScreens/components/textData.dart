@@ -77,3 +77,12 @@ Text otpHeading() {
     textAlign: TextAlign.center,
   );
 }
+
+//change password
+Text passwordHeading() {
+  return Text(
+    "Your password must be atleast 6 characters and should include a combination of numbers,letters and special characters(!@%).",
+    style: textTheme.apptextTheme.bodySmall,
+    textAlign: TextAlign.start,
+  );
+}

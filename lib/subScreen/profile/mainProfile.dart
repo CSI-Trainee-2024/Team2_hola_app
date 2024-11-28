@@ -20,7 +20,7 @@ class _mainProfileState extends State<mainProfile> {
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CircularProgressIndicator(
                         color: colors.mainColor,

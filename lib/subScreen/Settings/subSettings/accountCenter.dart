@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/passAndSecurity.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -77,6 +78,13 @@ class _accountCenterState extends State<accountCenter> {
                       color: colors.whiteColor,
                       size: 15,
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Passandsecurity(),
+                          ));
+                    },
                   ),
                   ListTile(
                     leading: const Icon(

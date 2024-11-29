@@ -12,11 +12,13 @@ class exploreScreen extends StatefulWidget {
   State<exploreScreen> createState() => _exploreScreenState();
 }
 
-class _exploreScreenState extends State<exploreScreen> {
+class _exploreScreenState extends State<exploreScreen>
+    with AutomaticKeepAliveClientMixin<exploreScreen> {
   final SearchController searchController = SearchController();
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
         child: DefaultTabController(
       length: 2,
@@ -56,15 +58,16 @@ class _exploreScreenState extends State<exploreScreen> {
               const SizedBox(
                 height: 20,
               ),
-               const Expanded(
-                child: TabBarView(
-                  children: [
-                    trendingPage(), 
-                    communityPage()]))
+              const Expanded(
+                  child:
+                      TabBarView(children: [trendingPage(), communityPage()]))
             ],
           ),
         ),
       ),
     ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

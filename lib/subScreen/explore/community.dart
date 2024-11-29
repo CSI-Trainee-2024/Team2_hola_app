@@ -12,7 +12,8 @@ class communityPage extends StatefulWidget {
   State<communityPage> createState() => _communityPageState();
 }
 
-class _communityPageState extends State<communityPage> {
+class _communityPageState extends State<communityPage>
+    with AutomaticKeepAliveClientMixin<communityPage> {
   late Future<List<allpost>> futurePosts;
   @override
   void initState() {
@@ -22,6 +23,7 @@ class _communityPageState extends State<communityPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); 
     return Column(
       children: [
         Expanded(
@@ -73,4 +75,7 @@ class _communityPageState extends State<communityPage> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

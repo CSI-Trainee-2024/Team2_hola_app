@@ -1,7 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/subScreen/profile/editProfile.dart';
+import 'package:hola_app/subScreen/profile/followes.dart';
+import 'package:hola_app/subScreen/profile/following.dart';
 import 'package:hola_app/subScreen/profile/mainProfile.dart';
+import 'package:hola_app/subScreen/profile/posts.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/utils/gesture.Detector.dart';
@@ -16,6 +21,7 @@ class profileScreen extends StatefulWidget {
 class _profileScreenState extends State<profileScreen> {
   List data = ['30', '1.5k', '1250'];
   List dataName = ['Post', 'Followers', 'Following'];
+  List screens = [const ProfilePost(), const Followes(), const Following()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -62,19 +68,28 @@ class _profileScreenState extends State<profileScreen> {
                         const SizedBox(
                           width: 35,
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              data[index],
-                              style: textTheme.apptextTheme.bodyLarge,
-                            ),
-                            Text(
-                              dataName[index],
-                              style: textTheme.apptextTheme.labelLarge,
-                            )
-                          ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return screens[index];
+                              },
+                            ));
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                data[index],
+                                style: textTheme.apptextTheme.bodyLarge,
+                              ),
+                              Text(
+                                dataName[index],
+                                style: textTheme.apptextTheme.labelLarge,
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           width: 35,

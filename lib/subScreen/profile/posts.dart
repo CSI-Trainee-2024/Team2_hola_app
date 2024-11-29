@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/themes/customTheme/textTheme.dart';
 
 class ProfilePost extends StatefulWidget {
   const ProfilePost({super.key});
@@ -10,6 +11,13 @@ class ProfilePost extends StatefulWidget {
 class _ProfilePostState extends State<ProfilePost> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Posts',
+          style: textTheme.apptextTheme.headlineSmall,),
+        ),
+      ),
+    );
   }
 }

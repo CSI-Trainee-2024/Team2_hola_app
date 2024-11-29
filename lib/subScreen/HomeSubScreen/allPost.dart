@@ -14,9 +14,11 @@ class alluserPost extends StatefulWidget {
   State<alluserPost> createState() => _alluserPostState();
 }
 
-class _alluserPostState extends State<alluserPost> {
+class _alluserPostState extends State<alluserPost>
+    with AutomaticKeepAliveClientMixin<alluserPost> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Column(
       children: [
         Expanded(
@@ -24,19 +26,19 @@ class _alluserPostState extends State<alluserPost> {
                 future: getPostApi(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                   return const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(
-                        color: colors.mainColor,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Loading...",
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
-                      ),
-                    ],
-                  );
+                    return const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          color: colors.mainColor,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          "Loading...",
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                        ),
+                      ],
+                    );
                   } else {
                     return ListView.builder(
                         itemCount: postList.length,
@@ -112,4 +114,7 @@ class _alluserPostState extends State<alluserPost> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

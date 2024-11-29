@@ -15,9 +15,11 @@ class homeScreen extends StatefulWidget {
   State<homeScreen> createState() => _homeScreenState();
 }
 
-class _homeScreenState extends State<homeScreen> {
+class _homeScreenState extends State<homeScreen>
+    with AutomaticKeepAliveClientMixin<homeScreen> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
         child: DefaultTabController(
       length: 2,
@@ -72,4 +74,7 @@ class _homeScreenState extends State<homeScreen> {
       ),
     ));
   }
+  
+  @override
+  bool get wantKeepAlive => true;
 }

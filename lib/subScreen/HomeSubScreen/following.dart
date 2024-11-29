@@ -13,9 +13,11 @@ class followingPost extends StatefulWidget {
   State<followingPost> createState() => _followingPostState();
 }
 
-class _followingPostState extends State<followingPost> {
+class _followingPostState extends State<followingPost>
+    with AutomaticKeepAliveClientMixin<followingPost> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Column(
       children: [
         const SizedBox(
@@ -88,18 +90,18 @@ class _followingPostState extends State<followingPost> {
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(
-                        color: colors.mainColor,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Loading...",
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
-                      ),
-                    ],
-                  );
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          color: colors.mainColor,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          "Loading...",
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                        ),
+                      ],
+                    );
                   } else {
                     return ListView.builder(
                         itemCount: followList.length,
@@ -175,4 +177,7 @@ class _followingPostState extends State<followingPost> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

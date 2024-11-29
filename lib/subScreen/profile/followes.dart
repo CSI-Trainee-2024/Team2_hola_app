@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/themes/customTheme/textTheme.dart';
 
 class Followes extends StatefulWidget {
   const Followes({super.key});
@@ -10,6 +11,11 @@ class Followes extends StatefulWidget {
 class _FollowesState extends State<Followes> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Followes',style: textTheme.apptextTheme.headlineSmall,),
+        ),
+      ));
   }
 }

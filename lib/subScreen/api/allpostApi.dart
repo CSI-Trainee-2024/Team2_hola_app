@@ -16,6 +16,6 @@ Future<List<allpost>> getPostApi() async {
     }
     return postList;
   } else {
-    return postList;
+     throw Exception('Failed to load posts');
   }
 }

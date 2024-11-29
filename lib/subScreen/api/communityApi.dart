@@ -8,7 +8,8 @@ List<Community> communtiyList = [];
 Future<List<Community>> communityApi() async {
   try {
      final response = await http
-      .get(Uri.parse("https://socialnetworkingsite.onrender.com/users"));
+      .get(Uri.parse(
+        "https://socialnetworkingsite.onrender.com/users"));
   var data = jsonDecode(response.body.toString());
 
   if (response.statusCode == 200) {

@@ -1,9 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
-import 'package:hola_app/utils/gesture.Detector.dart';
 import 'package:hola_app/utils/smallButton.dart';
 
 class Followes extends StatefulWidget {

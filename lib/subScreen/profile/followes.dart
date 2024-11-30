@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/chatting/chatSection.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
@@ -18,7 +19,7 @@ class _FollowesState extends State<Followes> {
         child: Scaffold(
       appBar: AppBar(
         title: Text(
-          'Followes',
+          'Followers',
           style: textTheme.apptextTheme.headlineSmall,
         ),
       ),
@@ -73,7 +74,13 @@ class _FollowesState extends State<Followes> {
                                   buttonPadding:
                                       const EdgeInsetsDirectional.symmetric(
                                           horizontal: 8, vertical: 5),
-                                  onButtonPressed: () {},
+                                  onButtonPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ChatScreen(),
+                                        ));
+                                  },
                                   textData: 'Message'));
                         });
                   }

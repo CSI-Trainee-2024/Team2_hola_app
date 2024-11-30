@@ -10,9 +10,11 @@ class userChats extends StatefulWidget {
   State<userChats> createState() => _userChatsState();
 }
 
-class _userChatsState extends State<userChats> {
+class _userChatsState extends State<userChats>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       child: DefaultTabController(
         length: 5,
@@ -75,4 +77,7 @@ class _userChatsState extends State<userChats> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

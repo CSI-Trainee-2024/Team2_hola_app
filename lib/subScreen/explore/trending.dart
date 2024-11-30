@@ -10,7 +10,8 @@ class trendingPage extends StatefulWidget {
   State<trendingPage> createState() => _trendingPageState();
 }
 
-class _trendingPageState extends State<trendingPage> with AutomaticKeepAliveClientMixin<trendingPage> {
+class _trendingPageState extends State<trendingPage>
+    with AutomaticKeepAliveClientMixin<trendingPage> {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -27,7 +28,7 @@ class _trendingPageState extends State<trendingPage> with AutomaticKeepAliveClie
                   const CircularProgressIndicator(
                     color: colors.mainColor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -48,9 +49,8 @@ class _trendingPageState extends State<trendingPage> with AutomaticKeepAliveClie
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image.network(
-                        fit: BoxFit.cover,
-                        exploreList[index].downloadUrl.toString()
-                      ),
+                          fit: BoxFit.cover,
+                          exploreList[index].downloadUrl.toString()),
                     );
                   });
             }
@@ -59,7 +59,7 @@ class _trendingPageState extends State<trendingPage> with AutomaticKeepAliveClie
       ],
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }

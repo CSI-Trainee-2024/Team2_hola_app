@@ -11,9 +11,10 @@ class allchat extends StatefulWidget {
   State<allchat> createState() => _allchatState();
 }
 
-class _allchatState extends State<allchat> {
+class _allchatState extends State<allchat> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Column(
       children: [
         Expanded(
@@ -75,4 +76,7 @@ class _allchatState extends State<allchat> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

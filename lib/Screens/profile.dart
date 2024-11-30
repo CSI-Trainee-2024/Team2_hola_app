@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/subScreen/profile/editProfile.dart';
 import 'package:hola_app/subScreen/profile/followes.dart';
 import 'package:hola_app/subScreen/profile/following.dart';
@@ -21,7 +18,7 @@ class profileScreen extends StatefulWidget {
 class _profileScreenState extends State<profileScreen> {
   List data = ['30', '1.5k', '1250'];
   List dataName = ['Post', 'Followers', 'Following'];
-  List screens = [const ProfilePost(), const Followes(), const Following()];
+  List screens = [const ProfilePost(), const Followes(), const UserFollowing()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(

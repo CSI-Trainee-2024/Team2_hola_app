@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/chatting/chatSection.dart';
+import 'package:hola_app/subScreen/otherUserProfile/mainPro.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
@@ -51,10 +52,10 @@ class _UserFollowingState extends State<UserFollowing> {
                               //horizontalTitleGap: 10,
                               minVerticalPadding: 20,
                               onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => ));
+                                 Navigator.push(
+                                     context,
+                                     MaterialPageRoute(
+                                         builder: (context) => const OtherUserMain()));
                               },
                               leading: CircleAvatar(
                                 radius: 40,

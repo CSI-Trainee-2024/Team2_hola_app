@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/Settings/subSettings/accountCenter.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/time%20management/appTime.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -92,6 +93,13 @@ class _mainSettingsState extends State<mainSettings> {
                   itemCount: arrdata.length,
                   itemBuilder: (context, index) {
                     return ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Apptime(),
+                            ));
+                      },
                       leading: Icon(
                         arrdata[index]['icon'],
                         color: colors.whiteColor,

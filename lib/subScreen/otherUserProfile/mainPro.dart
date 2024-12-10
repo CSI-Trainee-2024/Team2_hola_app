@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/chatting/chatSection.dart';
-import 'package:hola_app/subScreen/profile/mainProfile.dart';
-import 'package:hola_app/subScreen/profile/posts.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/utils/gesture.Detector.dart';

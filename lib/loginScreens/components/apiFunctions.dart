@@ -3,22 +3,22 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
-var baseUrl = "https://socialnetworkingsite.onrender.com";
+var baseUrl = "https://hola-project.onrender.com/api/auth";
 var data;
 
 Future<void> register(String userName, email, password) async {
   
   try {
     Response response = await http.post(
-      Uri.parse("$baseUrl/auth/register"),
+      Uri.parse("$baseUrl/register/"),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
-        'userName': userName,
+        'full_name': userName,
         'email': email,
         'password': password,
       }),
     );
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       data = jsonDecode(response.body.toString());
       print(data);
       print('Register successfully');
@@ -32,7 +32,7 @@ Future<void> register(String userName, email, password) async {
 
 Future<void> login(String email, password) async {
   try {
-    Response response = await http.post(Uri.parse("$baseUrl/auth/login"),
+    Response response = await http.post(Uri.parse("$baseUrl/login/"),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'email': email, 'password': password

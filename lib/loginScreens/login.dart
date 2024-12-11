@@ -111,16 +111,16 @@ class _loginScreenState extends State<loginScreen> {
                               isLoading = false;
                             });
 
-                            if (data['success'] == true && data != null) {
+                            if (data != null && data['access'] != null && data['refresh'] != null) {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => navigationBar()));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                       content: Text(
-                                          'Login Failed : ${data['message']}')));
+                                          'Incorrect username or password')));
                             }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -117,7 +117,8 @@ class _registorScreenState extends State<registorScreen> {
                           isLoading = false;
                         });
 
-                        if (data['success'] == true && data != null) {
+                        if (data['message'] == "User registered successfully" &&
+                            data != null) {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -132,29 +133,31 @@ class _registorScreenState extends State<registorScreen> {
                             SnackBar(content: Text(errorResolve())));
                       }
                     },
-                    child: isLoading 
-                    ? const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Creating'),
-                        SizedBox(
-                          width: 10,
-                          height: 60,
-                        ),
-                        CircularProgressIndicator(color: colors.whiteColor,),
-                      ],
-                    )
-                    : const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Create'),
-                        SizedBox(
-                          width: 10,
-                          height: 60,
-                        ),
-                        Text('Account')
-                      ],
-                    )),
+                    child: isLoading
+                        ? const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Creating'),
+                              SizedBox(
+                                width: 10,
+                                height: 60,
+                              ),
+                              CircularProgressIndicator(
+                                color: colors.whiteColor,
+                              ),
+                            ],
+                          )
+                        : const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Create'),
+                              SizedBox(
+                                width: 10,
+                                height: 60,
+                              ),
+                              Text('Account')
+                            ],
+                          )),
                 const SizedBox(
                   height: 15,
                 ),

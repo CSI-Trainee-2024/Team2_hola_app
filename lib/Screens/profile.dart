@@ -127,7 +127,7 @@ class _profileScreenState extends State<profileScreen> {
           ),
           Container(
               width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height * 0.7,
+              height: MediaQuery.sizeOf(context).height * 0.3,
               child: const mainProfile()),
         ],
       ),

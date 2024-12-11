@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/chatting/allchats.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/io.dart';
 
 class ChatScreen extends StatelessWidget {
   final List<Message> messages = [

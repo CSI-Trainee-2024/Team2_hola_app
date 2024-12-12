@@ -28,7 +28,14 @@ class _SplashscreenState extends State<Splashscreen> {
     return Scaffold(
       body: background(
           provideChild: Center(
-        child: Image.asset('assets/images/hola.png'),
+        child: Container(
+          height: 80,
+          width: 160,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/hola.png'),
+                  fit: BoxFit.contain)),
+        ),
       )),
     );
   }

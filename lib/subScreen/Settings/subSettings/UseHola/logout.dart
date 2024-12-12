@@ -68,11 +68,13 @@ class _LogoutState extends State<Logout> {
                       gestureDetector(
                           onPressed: () {
                             removeToken();
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => loginScreen(),
-                                ));
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => loginScreen(),
+                              ),
+                              (route) => false,
+                            );
                           },
                           textData: "Yes",
                           isColored: true,

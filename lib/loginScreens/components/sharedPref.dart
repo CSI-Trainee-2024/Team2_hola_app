@@ -17,7 +17,7 @@ Future<Map<String, String?>> getTokens() async {
   return {'accessToken': access, 'refreshToken': refresh};
 }
 
-// Removing the tokems
+// Removing the tokens
 Future<void> removeToken() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.remove('accessToken');

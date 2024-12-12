@@ -95,19 +95,17 @@ class _loginScreenState extends State<loginScreen> {
                       height: 35,
                     ),
                     ElevatedButton(
-                        onPressed: () async {
+                      onPressed: () async {
+                        if (loginKey.currentState?.validate() ?? false) {
                           setState(() {
                             isLoading = true;
                           });
-                          if (loginKey.currentState?.validate() ?? false) {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                                    content: Text('Success'
-                                        //data['message']
-                                        )));
 
-                            await login(loginMail.text.toString(),
-                                loginPassword.text.toString());
+                          try {
+                            await login(
+                              loginMail.text.toString(),
+                              loginPassword.text.toString(),
+                            );
 
                             setState(() {
                               isLoading = false;
@@ -120,44 +118,65 @@ class _loginScreenState extends State<loginScreen> {
                               String refreshToken = data['refresh'];
                               await saveTokens(accessToken, refreshToken);
                               await getTokens();
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Login Successful!'),
+                                ),
+                              );
+
                               Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => navigationBar()));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => navigationBar(),
+                                ),
+                              );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text(
-                                          'Incorrect username or password')));
+                                const SnackBar(
+                                  content:
+                                      Text('Incorrect username or password'),
+                                ),
+                              );
                             }
-                          } else {
+                          } catch (e) {
+                            setState(() {
+                              isLoading = false;
+                            });
                             ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(errorResolve())));
+                              SnackBar(
+                                content: Text('An error occurred: $e'),
+                              ),
+                            );
                           }
-                        },
-                        child: isLoading
-                            ? const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 13, bottom: 13),
-                                    child: CircularProgressIndicator(
-                                      color: colors.whiteColor,
-                                    ),
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(errorResolve())),
+                          );
+                        }
+                      },
+                      child: isLoading
+                          ? const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: 13, bottom: 13),
+                                  child: CircularProgressIndicator(
+                                    color: colors.whiteColor,
                                   ),
-                                ],
-                              )
-                            : const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 13, bottom: 13),
-                                    child: Text('Login'),
-                                  ),
-                                ],
-                              )),
+                                ),
+                              ],
+                            )
+                          : const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: 13, bottom: 13),
+                                  child: Text('Login'),
+                                ),
+                              ],
+                            ),
+                    ),
                     const SizedBox(
                       height: 15,
                     ),

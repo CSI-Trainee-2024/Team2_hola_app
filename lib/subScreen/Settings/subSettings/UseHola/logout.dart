@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/loginScreens/components/sharedPref.dart';
+import 'package:hola_app/loginScreens/login.dart';
+import 'package:hola_app/subScreen/Settings/mainSettings.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/utils/gesture.Detector.dart';
@@ -51,13 +54,26 @@ class _LogoutState extends State<Logout> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       gestureDetector(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => mainSettings(),
+                              ));
+                        },
                         textData: "Cancel",
                         textStyle: textTheme.apptextTheme.headlineMedium,
                         isColored: false,
                       ),
                       gestureDetector(
-                          onPressed: () {},
+                          onPressed: () {
+                            removeToken();
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => loginScreen(),
+                                ));
+                          },
                           textData: "Yes",
                           isColored: true,
                           textStyle: textTheme.apptextTheme.headlineMedium)

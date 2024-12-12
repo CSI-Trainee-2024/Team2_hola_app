@@ -1,7 +1,6 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:hola_app/Screens/navigationBar.dart';
 import 'package:hola_app/loginScreens/components/apiFunctions.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
@@ -98,16 +97,12 @@ class _registorScreenState extends State<registorScreen> {
                   height: 25,
                 ),
                 ElevatedButton(
-                    onPressed: () async {
+                  onPressed: () async {
+                    if (formKey.currentState?.validate() ?? false) {
                       setState(() {
                         isLoading = true;
                       });
-                      if (formKey.currentState?.validate() ?? false) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                                content: Text('success'
-                                    //data['message']
-                                    )));
+                      try {
                         await register(
                             fullNameController.text.toString(),
                             emailController.text.toString(),
@@ -119,45 +114,62 @@ class _registorScreenState extends State<registorScreen> {
 
                         if (data['message'] == "User registered successfully" &&
                             data != null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Registration Successful!'),
+                            ),
+                          );
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const loginScreen()));
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(
-                                  'Registration failed : ${data['message']}')));
+                            content:
+                                Text('Registration failed: ${data['message']}'),
+                          ));
                         }
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(errorResolve())));
+                      } catch (e) {
+                        setState(() {
+                          isLoading = false;
+                        });
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('An error occurred'),
+                        ));
+                        print('$e');
                       }
-                    },
-                    child: isLoading
-                        ? const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Creating'),
-                              SizedBox(
-                                width: 10,
-                                height: 60,
-                              ),
-                              CircularProgressIndicator(
-                                color: colors.whiteColor,
-                              ),
-                            ],
-                          )
-                        : const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Create'),
-                              SizedBox(
-                                width: 10,
-                                height: 60,
-                              ),
-                              Text('Account')
-                            ],
-                          )),
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(errorResolve())));
+                    }
+                  },
+                  child: isLoading
+                      ? const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Creating'),
+                            SizedBox(
+                              width: 10,
+                              height: 60,
+                            ),
+                            CircularProgressIndicator(
+                              color: colors.whiteColor,
+                            ),
+                          ],
+                        )
+                      : const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Create'),
+                            SizedBox(
+                              width: 10,
+                              height: 60,
+                            ),
+                            Text('Account')
+                          ],
+                        ),
+                ),
                 const SizedBox(
                   height: 15,
                 ),

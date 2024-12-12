@@ -37,7 +37,7 @@ TextSpan haveAccount() {
       text: 'Already have an account?    ',
       style: textTheme.apptextTheme.bodyLarge,
       children: [
-        TextSpan(text: 'Sign Up', style: textTheme.apptextTheme.bodyMedium)
+        TextSpan(text: 'Sign In', style: textTheme.apptextTheme.bodyMedium)
       ]);
 }
 
@@ -56,7 +56,7 @@ TextSpan notHaveAccount() {
       text: "Don't have an account?  ",
       style: textTheme.apptextTheme.bodyLarge,
       children: [
-        TextSpan(text: 'Sign In', style: textTheme.apptextTheme.bodyMedium)
+        TextSpan(text: 'Sign Up', style: textTheme.apptextTheme.bodyMedium)
       ]);
 }
 

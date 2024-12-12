@@ -103,10 +103,12 @@ class _OtherUserMainState extends State<OtherUserMain> {
                           ));
                     },
                     textData: 'Message',
+                    isColored: false,
                   ),
                   gestureDetector(
                     onPressed: () {},
                     textData: 'Following',
+                    isColored: false,
                   )
                 ],
               ),

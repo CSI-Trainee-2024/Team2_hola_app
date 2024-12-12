@@ -115,10 +115,14 @@ class _profileScreenState extends State<profileScreen> {
                       MaterialPageRoute(builder: (context) => editProfile()));
                 },
                 textData: 'Edit profile',
+                textStyle: textTheme.apptextTheme.labelLarge,
+                isColored: false,
               ),
               gestureDetector(
                 onPressed: () {},
                 textData: 'Share profile',
+                isColored: false,
+                textStyle: textTheme.apptextTheme.labelLarge,
               )
             ],
           ),

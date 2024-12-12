@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/archieve.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/blocked.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/closefriend.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/help.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/language.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/logout.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/privacy.dart';
+import 'package:hola_app/subScreen/Settings/subSettings/UseHola/saved.dart';
 import 'package:hola_app/subScreen/Settings/subSettings/accountCenter.dart';
 import 'package:hola_app/subScreen/Settings/subSettings/time%20management/appTime.dart';
 import 'package:hola_app/themes/colors.dart';
@@ -24,8 +32,16 @@ class _mainSettingsState extends State<mainSettings> {
     {'data': 'Logout', 'icon': Icons.logout_rounded}
   ];
   final List arrScreens = [
-    
-  ]
+    const Saved(),
+    const Archieve(),
+    Apptime(),
+    const Closefriend(),
+    const Blocked(),
+    const Privacy(),
+    const Language(),
+    const Help(),
+    const Logout()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +117,7 @@ class _mainSettingsState extends State<mainSettings> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Apptime(),
+                              builder: (context) => arrScreens[index],
                             ));
                       },
                       leading: Icon(

@@ -21,7 +21,11 @@ class _mainSettingsState extends State<mainSettings> {
     {'data': 'Account privacy', 'icon': Icons.lock_outline},
     {'data': 'Language', 'icon': Icons.language_sharp},
     {'data': 'Help', 'icon': Icons.help_outline},
+    {'data': 'Logout', 'icon': Icons.logout_rounded}
   ];
+  final List arrScreens = [
+    
+  ]
   @override
   Widget build(BuildContext context) {
     return Scaffold(

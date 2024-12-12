@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/Screens/splashscreen.dart';
-import 'package:hola_app/loginScreens/register.dart';
 import 'package:hola_app/themes/theme.dart';
 
 void main() {

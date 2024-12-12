@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
 import 'package:hola_app/loginScreens/loginStatus/checkLogin.dart';
-import 'package:hola_app/loginScreens/register.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -17,22 +16,20 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
     checkLogin(context);
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 4),
       () {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const registorScreen(),
-            ));
+        checkLogin(context);
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return background(
-        provideChild: Center(
-      child: Image.asset('assets/images/hola.png'),
-    ));
+    return Scaffold(
+      body: background(
+          provideChild: Center(
+        child: Image.asset('assets/images/hola.png'),
+      )),
+    );
   }
 }

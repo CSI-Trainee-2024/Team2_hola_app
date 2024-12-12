@@ -10,6 +10,7 @@ import 'package:hola_app/loginScreens/components/sharedPref.dart';
 import 'package:hola_app/loginScreens/components/textData.dart';
 import 'package:hola_app/loginScreens/components/validators.dart';
 import 'package:hola_app/loginScreens/forgetPassword.dart';
+import 'package:hola_app/loginScreens/register.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 
@@ -174,10 +175,10 @@ class _loginScreenState extends State<loginScreen> {
                     TextButton(
                       onPressed: () {
                         //Navigator.pop(context);
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => navigationBar()));
+                                builder: (context) => const registorScreen()));
                       },
                       child: RichText(
                         text: notHaveAccount(),

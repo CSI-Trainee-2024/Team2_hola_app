@@ -122,7 +122,7 @@ class _registorScreenState extends State<registorScreen> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => navigationBar()));
+                                  builder: (context) => const loginScreen()));
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
@@ -181,7 +181,7 @@ class _registorScreenState extends State<registorScreen> {
                 // ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const loginScreen()));

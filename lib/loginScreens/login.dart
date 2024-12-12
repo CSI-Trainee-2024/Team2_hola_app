@@ -6,6 +6,7 @@ import 'package:hola_app/loginScreens/components/apiFunctions.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
 import 'package:hola_app/loginScreens/components/customInput1.dart';
 import 'package:hola_app/loginScreens/components/loginWithGoogle.dart';
+import 'package:hola_app/loginScreens/components/sharedPref.dart';
 import 'package:hola_app/loginScreens/components/textData.dart';
 import 'package:hola_app/loginScreens/components/validators.dart';
 import 'package:hola_app/loginScreens/forgetPassword.dart';
@@ -111,7 +112,13 @@ class _loginScreenState extends State<loginScreen> {
                               isLoading = false;
                             });
 
-                            if (data != null && data['access'] != null && data['refresh'] != null) {
+                            if (data != null &&
+                                data['access'] != null &&
+                                data['refresh'] != null) {
+                              String accessToken = data['access'];
+                              String refreshToken = data['refresh'];
+                              await saveTokens(accessToken, refreshToken);
+                              await getTokens();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(

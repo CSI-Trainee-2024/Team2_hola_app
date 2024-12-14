@@ -4,6 +4,7 @@ import 'package:hola_app/subScreen/profile/followes.dart';
 import 'package:hola_app/subScreen/profile/following.dart';
 import 'package:hola_app/subScreen/profile/mainProfile.dart';
 import 'package:hola_app/subScreen/profile/posts.dart';
+import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/utils/gesture.Detector.dart';
@@ -119,7 +120,9 @@ class _profileScreenState extends State<profileScreen> {
                 isColored: false,
               ),
               gestureDetector(
-                onPressed: () {},
+                onPressed: () {
+                  userProfile();
+                },
                 textData: 'Share profile',
                 isColored: false,
                 textStyle: textTheme.apptextTheme.labelLarge,

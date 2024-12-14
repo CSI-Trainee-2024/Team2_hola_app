@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/api/exploreApi.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
+import 'package:hola_app/themes/models/allpost.dart';
 
 class trendingPage extends StatefulWidget {
   const trendingPage({super.key});
@@ -12,6 +13,13 @@ class trendingPage extends StatefulWidget {
 
 class _trendingPageState extends State<trendingPage>
     with AutomaticKeepAliveClientMixin<trendingPage> {
+  late Future<List<allpost>> exploreListFuture;
+  @override
+  void initState() {
+    super.initState();
+    exploreListFuture = getExploreApi();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -19,7 +27,7 @@ class _trendingPageState extends State<trendingPage>
       children: [
         Expanded(
             child: FutureBuilder(
-          future: getExploreApi(),
+          future: exploreListFuture,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Column(

@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hola_app/Screens/HomeScreen.dart';
 import 'package:hola_app/Screens/navigationBar.dart';
 import 'package:hola_app/subScreen/createPostSub/createPostApi.dart';
-import 'package:hola_app/subScreen/createPostSub/postCreated.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:image_picker/image_picker.dart';
@@ -99,29 +97,50 @@ class createPostScreenState extends State<createPostScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () async {
-                  if (captionController.text.isNotEmpty) {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    try {
-                      print(captionController.text);
-                      print(selectedImage?.path.toString());
-                      await createdPost(
-                          captionController.text.toString(),
-                          selectedImage?.path.toString(),
-                          postController.text.toString());
+                  onPressed: () async {
+                    if (captionController.text.isNotEmpty) {
                       setState(() {
-                        isLoading = false;
+                        isLoading = true;
                       });
-                    } catch (e) {
-                      setState(() {
-                        isLoading = false;
-                      });
+                      try {
+                        print(captionController.text);
+                        print(selectedImage?.path.toString());
+                        await createdPost(
+                            captionController.text.toString(),
+                            selectedImage?.path.toString(),
+                            postController.text.toString());
+                        setState(() {
+                          isLoading = false;
+                        });
+
+                        if (postData['content'] != null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("Post created successfully")));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => navigationBar(),
+                              ));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("Cannot create the post")));
+                        }
+                      } catch (e) {
+                        setState(() {
+                          isLoading = false;
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("An error has occured")));
+                      }
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Caption is requried")));
                     }
-                  }
-                  // to navigate to a next page
-                  /* if (postController.text.isNotEmpty || selectedImage != null) {
+                    // to navigate to a next page
+                    /* if (postController.text.isNotEmpty || selectedImage != null) {
                     setState(
                       () {
                         posts.add({
@@ -139,9 +158,24 @@ class createPostScreenState extends State<createPostScreen> {
                     captionController.clear();
                     selectedImage = null;
                   }*/
-                },
-                child: const Text('Post'),
-              ),
+                  },
+                  child: isLoading
+                      ? const SizedBox(
+                          width: 150,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Posting...'),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              CircularProgressIndicator(
+                                color: colors.whiteColor,
+                              )
+                            ],
+                          ),
+                        )
+                      : const Text('Post')),
             ],
           ),
         ),

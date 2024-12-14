@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/components/likeShareComment.dart';
-import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
+import 'package:hola_app/utils/newApi/AllUserApi.dart';
+import 'package:hola_app/utils/newModels/homePageModel.dart';
 
 class alluserPost extends StatefulWidget {
   const alluserPost({super.key});
@@ -15,14 +16,21 @@ class alluserPost extends StatefulWidget {
 
 class _alluserPostState extends State<alluserPost>
     with AutomaticKeepAliveClientMixin<alluserPost> {
+  late Future<HomePage?> futureHomePage;
+  @override
+  void initState() {
+    super.initState();
+    futureHomePage = ApiService().fetchHomePageData();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return Column(
       children: [
         Expanded(
-            child: FutureBuilder(
-                future: getPostApi(),
+            child: FutureBuilder<HomePage?>(
+                future: futureHomePage,
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const Column(
@@ -39,9 +47,12 @@ class _alluserPostState extends State<alluserPost>
                       ],
                     );
                   } else {
+                    HomePage homePage = snapshot.data!;
+                    List<Posts> posts = homePage.posts ?? [];
                     return ListView.builder(
-                        itemCount: postList.length,
+                        itemCount: posts.length,
                         itemBuilder: (context, index) {
+                          Posts post = posts[index];
                           return SingleChildScrollView(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 20),
@@ -68,7 +79,7 @@ class _alluserPostState extends State<alluserPost>
                                             'assets/images/userImage.png'),
                                       ),
                                       Text(
-                                        postList[index].author.toString(),
+                                        post.createdBy.toString(),
                                         style: textTheme.apptextTheme.bodyLarge,
                                       ),
                                       IconButton(
@@ -83,11 +94,11 @@ class _alluserPostState extends State<alluserPost>
                                     height: 15,
                                   ),
                                   Text(
-                                    'The Earth has music for all those who listen',
+                                    post.content ?? 'Nature is Love',
                                     style: textTheme.apptextTheme.bodySmall,
                                   ),
                                   Text(
-                                    '#NatureLovers #Explore #WildlifePhotography #MotherNature #NaturePerfection',
+                                    post.tags ?? '#Explore',
                                     style: textTheme.apptextTheme.labelLarge,
                                   ),
                                   const SizedBox(
@@ -96,13 +107,13 @@ class _alluserPostState extends State<alluserPost>
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
                                     child: Image.network(
-                                      postList[index].downloadUrl.toString(),
+                                      post.media ?? "No Media",
                                       height: 250,
                                       width: double.infinity,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  likecommentShare()
+                                  const likecommentShare()
                                 ],
                               ),
                             ),

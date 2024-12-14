@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hola_app/Screens/HomeScreen.dart';
 import 'package:hola_app/Screens/navigationBar.dart';
+import 'package:hola_app/subScreen/createPostSub/createPostApi.dart';
 import 'package:hola_app/subScreen/createPostSub/postCreated.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
@@ -17,6 +18,7 @@ class createPostScreen extends StatefulWidget {
 class createPostScreenState extends State<createPostScreen> {
   final TextEditingController postController = TextEditingController();
   final TextEditingController captionController = TextEditingController();
+  bool isLoading = false;
 
   File? selectedImage;
   Future<void> pickImage() async {
@@ -92,12 +94,31 @@ class createPostScreenState extends State<createPostScreen> {
                 controller: postController,
                 maxLines: 2,
                 decoration: const InputDecoration(
-                  hintText: 'What\'s on your mind?',
+                  hintText: 'Add Tags...',
                 ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  if (captionController.text.isNotEmpty) {
+                    setState(() {
+                      isLoading = true;
+                    });
+                    try {
+                      await createdPost(
+                          captionController.text.toString(),
+                          selectedImage?.path.toString(),
+                          postController.text.toString());
+                      setState(() {
+                        isLoading = false;
+                      });
+                    } catch (e) {
+                      setState(() {
+                        isLoading = false;
+                      });
+                    }
+                  }
+                  // to navigate to a next page
                   if (postController.text.isNotEmpty || selectedImage != null) {
                     setState(
                       () {

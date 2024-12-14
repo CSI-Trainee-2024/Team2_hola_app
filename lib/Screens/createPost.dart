@@ -105,6 +105,8 @@ class createPostScreenState extends State<createPostScreen> {
                       isLoading = true;
                     });
                     try {
+                      print(captionController.text);
+                      print(selectedImage?.path.toString());
                       await createdPost(
                           captionController.text.toString(),
                           selectedImage?.path.toString(),
@@ -119,7 +121,7 @@ class createPostScreenState extends State<createPostScreen> {
                     }
                   }
                   // to navigate to a next page
-                  if (postController.text.isNotEmpty || selectedImage != null) {
+                  /* if (postController.text.isNotEmpty || selectedImage != null) {
                     setState(
                       () {
                         posts.add({
@@ -136,7 +138,7 @@ class createPostScreenState extends State<createPostScreen> {
                     postController.clear();
                     captionController.clear();
                     selectedImage = null;
-                  }
+                  }*/
                 },
                 child: const Text('Post'),
               ),

@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:hola_app/loginScreens/components/sharedPref.dart';
+import 'package:hola_app/subScreen/profile/profileModel/userProfileModel.dart';
 import 'package:http/http.dart' as http;
 
 var userUrl = "https://hola-project.onrender.com";
 var profile;
 var userPostdata;
 var uniqueId;
+List<userPostModel> userPostList = [];
 
 Future<void> userProfile() async {
   try {
@@ -33,14 +35,13 @@ Future<void> userProfile() async {
 }
 
 // user Posts
-Future<void> userPosts() async {
-  try {
+Future<List<userPostModel>> userPosts() async {
+
     Map<String, String?> tokens = await getTokens();
     String? accessToken = tokens['accessToken'];
     print('UserPost Toekn : $accessToken');
     if (accessToken == null) {
       print("Authorization token is missing");
-      return;
     }
     uniqueId = profile['id'];
     final response = await http.get(
@@ -49,13 +50,16 @@ Future<void> userPosts() async {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $accessToken'
         });
+    userPostdata = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
-      userPostdata = jsonDecode(response.body.toString());
-      print(userPostdata);
+      userPostList.clear();
+      for (Map i in userPostdata) {
+        userPostList.add(userPostModel.fromJson(i as Map<String, dynamic>));
+      }
+       return userPostList;
+      //print(userPostdata);
     } else {
-      print("UserResonse status code :$response");
-    }
-  } catch (e) {
-    print(e.toString());
+      throw Exception('Failed to load posts: $response');
+      //print("UserResonse status code :$response");
   }
 }

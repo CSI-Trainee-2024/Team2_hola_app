@@ -5,7 +5,8 @@ import 'package:hola_app/subScreen/HomeSubScreen/components/likeShareComment.dar
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/utils/newApi/AllUserApi.dart';
-import 'package:hola_app/utils/newModels/homePageModel.dart';
+import 'package:hola_app/utils/newModels/HomePageModel.dart';
+
 
 class alluserPost extends StatefulWidget {
   const alluserPost({super.key});

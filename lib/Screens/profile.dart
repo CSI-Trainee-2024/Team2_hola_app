@@ -8,6 +8,7 @@ import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/utils/gesture.Detector.dart';
+import 'package:hola_app/utils/newApi/AllUserApi.dart';
 
 class profileScreen extends StatefulWidget {
   const profileScreen({super.key});
@@ -174,7 +175,6 @@ class _profileScreenState extends State<profileScreen> {
                           ),
                           gestureDetector(
                             onPressed: () {
-                              userPosts();
                             },
                             textData: 'Share profile',
                             isColored: false,

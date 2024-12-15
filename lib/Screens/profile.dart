@@ -17,6 +17,7 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
+  var uniqueId;
   List data = ['0', '0', '0'];
   List dataName = ['Post', 'Followers', 'Following'];
   List screens = [const ProfilePost(), const Followes(), const UserFollowing()];
@@ -26,6 +27,7 @@ class _profileScreenState extends State<profileScreen> {
       data[0] = profile['num_posts'].toString();
       data[1] = profile['num_followers'].toString();
       data[2] = profile['num_following'].toString();
+      uniqueId = profile['id'];
     });
   }
 
@@ -172,7 +174,7 @@ class _profileScreenState extends State<profileScreen> {
                           ),
                           gestureDetector(
                             onPressed: () {
-                              userProfile();
+                              userPosts();
                             },
                             textData: 'Share profile',
                             isColored: false,

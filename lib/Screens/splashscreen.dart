@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:hola_app/Screens/navigationBar.dart';
 import 'package:hola_app/loginScreens/components/background.dart';
+import 'package:hola_app/loginScreens/login.dart';
 import 'package:hola_app/loginScreens/loginStatus/checkLogin.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -14,11 +16,21 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    checkLogin(context);
+    // //checkLogin(context);
+    // Timer(
+    //   const Duration(seconds: 4),
+    //   () {
+    //     //checkLogin(context);
+    //   },
+    // );
     Timer(
-      const Duration(seconds: 4),
+      Duration(seconds: 4),
       () {
-        checkLogin(context);
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => loginScreen(),
+            ));
       },
     );
   }
@@ -26,8 +38,7 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: background(
-          provideChild: Center(
+      body:Center(
         child: Container(
           height: 80,
           width: 160,
@@ -36,7 +47,7 @@ class _SplashscreenState extends State<Splashscreen> {
                   image: AssetImage('assets/images/hola.png'),
                   fit: BoxFit.contain)),
         ),
-      )),
+      )
     );
   }
 }

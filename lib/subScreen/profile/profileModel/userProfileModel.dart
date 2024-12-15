@@ -9,7 +9,7 @@ class userPostModel {
   int? likesCount;
   int? commentsCount;
   String? tags;
-  Null? profilePhoto;
+  String? profilePhoto;
 
   userPostModel(
       {this.id,

@@ -36,30 +36,29 @@ Future<void> userProfile() async {
 
 // user Posts
 Future<List<userPostModel>> userPosts() async {
-
-    Map<String, String?> tokens = await getTokens();
-    String? accessToken = tokens['accessToken'];
-    print('UserPost Toekn : $accessToken');
-    if (accessToken == null) {
-      print("Authorization token is missing");
+  Map<String, String?> tokens = await getTokens();
+  String? accessToken = tokens['accessToken'];
+  print('UserPost Toekn : $accessToken');
+  if (accessToken == null) {
+    print("Authorization token is missing");
+  }
+  uniqueId = profile['id'];
+  final response = await http.get(
+      Uri.parse('$userUrl/api/accounts/profile/$uniqueId/posts/'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $accessToken'
+      });
+  userPostdata = jsonDecode(response.body.toString());
+  print(userPostdata);
+  if (response.statusCode == 200) {
+    userPostList.clear();
+    for (Map i in userPostdata) {
+      userPostList.add(userPostModel.fromJson(i as Map<String, dynamic>));
     }
-    uniqueId = profile['id'];
-    final response = await http.get(
-        Uri.parse('$userUrl/api/accounts/profile/$uniqueId/posts/'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $accessToken'
-        });
-    userPostdata = jsonDecode(response.body.toString());
-    if (response.statusCode == 200) {
-      userPostList.clear();
-      for (Map i in userPostdata) {
-        userPostList.add(userPostModel.fromJson(i as Map<String, dynamic>));
-      }
-       return userPostList;
-      //print(userPostdata);
-    } else {
-      throw Exception('Failed to load posts: $response');
-      //print("UserResonse status code :$response");
+    return userPostList;
+  } else {
+    throw Exception('Failed to load posts: $response');
+    //print("UserResonse status code :$response");
   }
 }

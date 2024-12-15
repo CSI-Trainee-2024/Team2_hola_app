@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
+import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/colors.dart';
 
 class mainProfile extends StatefulWidget {
@@ -16,7 +17,7 @@ class _mainProfileState extends State<mainProfile> {
       children: [
         Expanded(
           child: FutureBuilder(
-              future: getPostApi(),
+              future: userPosts(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return const Column(
@@ -35,7 +36,7 @@ class _mainProfileState extends State<mainProfile> {
                 } else {
                   return GridView.builder(
                       //physics: NeverScrollableScrollPhysics(),
-                      itemCount: postList.length,
+                      itemCount: userPostList.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
@@ -43,11 +44,22 @@ class _mainProfileState extends State<mainProfile> {
                               mainAxisSpacing: 10,
                               crossAxisSpacing: 10),
                       itemBuilder: (context, index) {
+                        String mediaUrl =
+                            userPostList[index].media?.toString() ?? "";
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: Image.network(
-                              fit: BoxFit.cover,
-                              postList[index].downloadUrl.toString()),
+                          child: mediaUrl.isNotEmpty
+                              ? Image.network(
+                                  mediaUrl,
+                                  fit: BoxFit.cover,
+                                )
+                              : Container(
+                                  color: colors.greyColor,
+                                  child: Center(
+                                      child: Text(userPostList[index]
+                                          .content
+                                          .toString())),
+                                ),
                         );
                       });
                 }

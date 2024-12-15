@@ -21,8 +21,8 @@ class ApiService {
       final response = await http.get(
         Uri.parse(url),
        headers: {
+        'Content-Type': 'application/json',
          'Authorization': 'Bearer $access',
-          'Content-Type': 'application/json',
        }
       );
       print('Request: ${response.request}');

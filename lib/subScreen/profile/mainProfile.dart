@@ -44,11 +44,12 @@ class _mainProfileState extends State<mainProfile> {
                               mainAxisSpacing: 10,
                               crossAxisSpacing: 10),
                       itemBuilder: (context, index) {
-                        String mediaUrl =
-                            userPostList[index].media?.toString() ?? "";
+                        String mediaUrl = userPostList[index].media.toString();
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: mediaUrl.isNotEmpty
+                          child: mediaUrl != "null" &&
+                                  mediaUrl !=
+                                      "http://res.cloudinary.com/dy1a8nyco/image/upload/null"
                               ? Image.network(
                                   mediaUrl,
                                   fit: BoxFit.cover,

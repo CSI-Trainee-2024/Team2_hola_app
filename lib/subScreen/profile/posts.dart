@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/components/likeShareComment.dart';
 import 'package:hola_app/subScreen/api/allpostApi.dart';
@@ -28,14 +29,16 @@ class _ProfilePostState extends State<ProfilePost>
           children: [
             Expanded(
                 child: FutureBuilder(
-                    future: getPostApi(),
+                    future: userPosts(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircularProgressIndicator(
-                              color: colors.mainColor,
+                            Center(
+                              child: CircularProgressIndicator(
+                                color: colors.mainColor,
+                              ),
                             ),
                             SizedBox(height: 20),
                             Text(
@@ -47,7 +50,7 @@ class _ProfilePostState extends State<ProfilePost>
                         );
                       } else {
                         return ListView.builder(
-                            itemCount: postList.length,
+                            itemCount: userPostList.length,
                             itemBuilder: (context, index) {
                               return SingleChildScrollView(
                                 padding: const EdgeInsets.symmetric(
@@ -70,13 +73,22 @@ class _ProfilePostState extends State<ProfilePost>
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          const CircleAvatar(
+                                          CircleAvatar(
                                             radius: 25,
-                                            backgroundImage: AssetImage(
-                                                'assets/images/userImage.png'),
+                                            backgroundImage: userPostList[index]
+                                                        .profilePhoto !=
+                                                    null
+                                                ? NetworkImage(
+                                                    userPostList[index]
+                                                        .profilePhoto
+                                                        .toString())
+                                                : const AssetImage(
+                                                    'assets/images/userImage.png'),
                                           ),
                                           Text(
-                                            postList[index].author.toString(),
+                                            userPostList[index]
+                                                .createdBy
+                                                .toString(),
                                             style: textTheme
                                                 .apptextTheme.bodyLarge,
                                           ),
@@ -92,11 +104,11 @@ class _ProfilePostState extends State<ProfilePost>
                                         height: 15,
                                       ),
                                       Text(
-                                        'The Earth has music for all those who listen',
+                                        userPostList[index].content.toString(),
                                         style: textTheme.apptextTheme.bodySmall,
                                       ),
                                       Text(
-                                        '#NatureLovers #Explore #WildlifePhotography #MotherNature #NaturePerfection',
+                                        userPostList[index].tags.toString(),
                                         style:
                                             textTheme.apptextTheme.labelLarge,
                                       ),
@@ -105,14 +117,29 @@ class _ProfilePostState extends State<ProfilePost>
                                       ),
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
-                                        child: Image.network(
-                                          postList[index]
-                                              .downloadUrl
-                                              .toString(),
-                                          height: 250,
-                                          width: double.infinity,
-                                          fit: BoxFit.cover,
-                                        ),
+                                        child: userPostList[index].media !=
+                                                    null &&
+                                                userPostList[index].media !=
+                                                    "http://res.cloudinary.com/dy1a8nyco/image/upload/null"
+                                            ? Image.network(
+                                                userPostList[index]
+                                                    .media
+                                                    .toString(),
+                                                height: 250,
+                                                width: double.infinity,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Container(
+                                                color: colors.greyColor,
+                                                width: double.infinity,
+                                                height: 250,
+                                                child: Center(
+                                                  child: Text(
+                                                      userPostList[index]
+                                                          .content
+                                                          .toString()),
+                                                ),
+                                              ),
                                       ),
                                       likecommentShare()
                                     ],

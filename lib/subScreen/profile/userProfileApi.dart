@@ -8,9 +8,11 @@ var userUrl = "https://hola-project.onrender.com";
 var profile;
 var userPostdata;
 var userFollowerData;
+var userFollowingData;
 var uniqueId;
 List<userPostModel> userPostList = [];
 List<FollowersList> userFollowes = [];
+List<FollowersList> userFollowing = [];
 
 Future<void> userProfile() async {
   try {
@@ -88,3 +90,4 @@ Future<List<FollowersList>> getFollowers() async {
     throw Exception('failed to load data $response');
   }
 }
+

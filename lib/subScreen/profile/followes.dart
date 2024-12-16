@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/chatting/chatSection.dart';
 import 'package:hola_app/subScreen/otherUserProfile/mainPro.dart';
+import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
-import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
 import 'package:hola_app/utils/smallButton.dart';
 
@@ -28,26 +28,28 @@ class _FollowesState extends State<Followes> {
         children: [
           Expanded(
             child: FutureBuilder(
-                future: getPostApi(),
+                future: getFollowers(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CircularProgressIndicator(
-                          color: colors.mainColor,
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "Loading...",
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
-                      ],
+                    return const Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(
+                            color: colors.mainColor,
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Loading...",
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                        ],
+                      ),
                     );
                   } else {
                     return ListView.builder(
-                        itemCount: postList.length,
+                        itemCount: userFollowes.length,
                         itemBuilder: (context, index) {
                           return ListTile(
                               //horizontalTitleGap: 10,
@@ -59,17 +61,20 @@ class _FollowesState extends State<Followes> {
                                         builder: (context) =>
                                             const OtherUserMain()));
                               },
-                              leading: CircleAvatar(
+                              leading: const CircleAvatar(
                                 radius: 40,
-                                backgroundImage: NetworkImage(
-                                    postList[index].downloadUrl.toString()),
+                                backgroundImage:
+                                    AssetImage("assets/images/userImage.png"),
                               ),
                               title: Text(
-                                postList[index].author.toString(),
-                                style: textTheme.apptextTheme.labelLarge,
+                                userFollowes[index]
+                                    .username
+                                    .toString()
+                                    .split('@')[0],
+                                style: textTheme.apptextTheme.bodyLarge,
                               ),
                               subtitle: Text(
-                                'Allen003',
+                                userFollowes[index].id.toString(),
                                 style: textTheme.apptextTheme.displaySmall,
                               ),
                               trailing: Messaagebutton(

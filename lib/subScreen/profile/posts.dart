@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/comment/comment.dart';
-import 'package:hola_app/subScreen/HomeSubScreen/components/showLCS.dart';
 import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
-import 'package:hola_app/subScreen/HomeSubScreen/components/likeShareComment.dart';
-import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/themes/colors.dart';
 
 class ProfilePost extends StatefulWidget {
@@ -174,7 +171,7 @@ class _ProfilePostState extends State<ProfilePost>
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
-                                                                commentScreen()));
+                                                                const commentScreen()));
                                                   },
                                                   icon: const Icon(
                                                     Icons.comment_outlined,

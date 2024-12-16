@@ -91,3 +91,25 @@ Future<List<FollowersList>> getFollowers() async {
   }
 }
 
+//userFollowing
+Future<List<FollowersList>> getFollowing() async {
+  Map<String, String?> tokens = await getTokens();
+  String? followingToken = tokens['accessToken'];
+
+  uniqueId = profile['id'];
+  final response = await http
+      .get(Uri.parse('$userUrl/api/accounts/following/$uniqueId/'), headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer $followingToken'
+  });
+  userFollowingData = jsonDecode(response.body.toString());
+  if (response.statusCode == 200) {
+    userFollowing.clear();
+    for (Map i in userFollowingData) {
+      userFollowing.add(FollowersList.fromJson(i as Map<String, dynamic>));
+    }
+    return userFollowing;
+  } else {
+    throw Exception('Failed to load data : $response');
+  }
+}

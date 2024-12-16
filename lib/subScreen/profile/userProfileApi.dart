@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'package:hola_app/loginScreens/components/sharedPref.dart';
+import 'package:hola_app/subScreen/profile/profileModel/followersModel.dart';
 import 'package:hola_app/subScreen/profile/profileModel/userProfileModel.dart';
 import 'package:http/http.dart' as http;
 
 var userUrl = "https://hola-project.onrender.com";
 var profile;
 var userPostdata;
+var userFollowerData;
 var uniqueId;
 List<userPostModel> userPostList = [];
+List<FollowersList> userFollowes = [];
 
 Future<void> userProfile() async {
   try {
@@ -60,5 +63,28 @@ Future<List<userPostModel>> userPosts() async {
   } else {
     throw Exception('Failed to load posts: $response');
     //print("UserResonse status code :$response");
+  }
+}
+
+// user followers
+Future<List<FollowersList>> getFollowers() async {
+  Map<String, String?> tokens = await getTokens();
+  String? followerToken = tokens['accessToken'];
+
+  uniqueId = profile['id'];
+  final response = await http
+      .get(Uri.parse('$userUrl/api/accounts/followers/$uniqueId/'), headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer $followerToken'
+  });
+  userFollowerData = jsonDecode(response.body.toString());
+  if (response.statusCode == 200) {
+    userFollowes.clear();
+    for (Map i in userFollowerData) {
+      userFollowes.add(FollowersList.fromJson(i as Map<String, dynamic>));
+    }
+    return userFollowes;
+  } else {
+    throw Exception('failed to load data $response');
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/comment/comment.dart';
+import 'package:hola_app/subScreen/HomeSubScreen/components/showLCS.dart';
 import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/customTheme/textTheme.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/components/likeShareComment.dart';
@@ -141,7 +143,74 @@ class _ProfilePostState extends State<ProfilePost>
                                                 ),
                                               ),
                                       ),
-                                      likecommentShare()
+                                      Row(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {},
+                                                  icon: const Icon(
+                                                    Icons.favorite,
+                                                    color: colors.whiteColor,
+                                                    size: 22,
+                                                  )),
+                                              Text(
+                                                userPostList[index]
+                                                    .likesCount
+                                                    .toString(),
+                                                style: textTheme
+                                                    .apptextTheme.labelLarge,
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+                                                    //incrementComment();
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                commentScreen()));
+                                                  },
+                                                  icon: const Icon(
+                                                    Icons.comment_outlined,
+                                                    color: colors.whiteColor,
+                                                    size: 22,
+                                                  )),
+                                              Text(
+                                                userPostList[index]
+                                                    .commentsCount
+                                                    .toString(),
+                                                style: textTheme
+                                                    .apptextTheme.labelLarge,
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                  'assets/images/Share.png'),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                userPostList[index]
+                                                    .id
+                                                    .toString(),
+                                                style: textTheme
+                                                    .apptextTheme.labelLarge,
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      )
                                     ],
                                   ),
                                 ),

@@ -58,6 +58,7 @@ class _registorScreenState extends State<registorScreen> {
                   controller1: fullNameController,
                   validators: nameValidator,
                   hintText: 'Full Name',
+                  read: false,
                   prefixIcon: const Icon(
                     Icons.person,
                     size: 35,
@@ -72,6 +73,7 @@ class _registorScreenState extends State<registorScreen> {
                   controller1: emailController,
                   validators: emailValidator,
                   hintText: 'Email Address',
+                  read: false,
                   prefixIcon: const Icon(
                     Icons.email_outlined,
                     size: 35,
@@ -86,6 +88,7 @@ class _registorScreenState extends State<registorScreen> {
                   controller1: passwordController,
                   validators: passwordValidator,
                   hintText: 'Password',
+                  read: false,
                   prefixIcon: const Icon(
                     Icons.lock_outline,
                     size: 35,

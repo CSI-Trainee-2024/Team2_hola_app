@@ -13,7 +13,7 @@ class editProfile extends StatefulWidget {
 }
 
 class _editProfileState extends State<editProfile> {
-  final nameController = TextEditingController(text: 'Paul Jarvis');
+  final nameController = TextEditingController(text: "");
   final userController = TextEditingController(text: 'Allen003');
   final bioController =
       TextEditingController(text: 'Trust the process of nature');
@@ -116,6 +116,7 @@ class _editProfileState extends State<editProfile> {
                 height: 30,
               ),
               inputField1(
+                read: false,
                 controller1: nameController,
                 obscureText: false,
                 labelText: 'Name',
@@ -126,12 +127,14 @@ class _editProfileState extends State<editProfile> {
               inputField1(
                 controller1: userController,
                 obscureText: false,
+                read: true,
                 labelText: 'Username',
               ),
               const SizedBox(
                 height: 20,
               ),
               inputField1(
+                  read: false,
                   controller1: bioController,
                   labelText: 'Bio',
                   obscureText: false)

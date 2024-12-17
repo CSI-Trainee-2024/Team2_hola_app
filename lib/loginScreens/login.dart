@@ -53,6 +53,7 @@ class _loginScreenState extends State<loginScreen> {
                     inputField1(
                       controller1: loginMail,
                       hintText: 'Email Address',
+                      read: false,
                       obscureText: false,
                       validators: emailValidator,
                       prefixIcon: const Icon(
@@ -67,6 +68,7 @@ class _loginScreenState extends State<loginScreen> {
                     inputField1(
                       controller1: loginPassword,
                       hintText: 'Password',
+                      read: false,
                       obscureText: true,
                       validators: passwordValidator,
                       prefixIcon: const Icon(

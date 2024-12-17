@@ -38,6 +38,7 @@ class _ChangepasswordState extends State<Changepassword> {
             inputField1(
                 controller1: currentPass,
                 hintText: 'Current password',
+                read: false,
                 validators: passwordValidator,
                 keyInputType: TextInputType.visiblePassword,
                 prefixIcon: const Icon(
@@ -51,6 +52,7 @@ class _ChangepasswordState extends State<Changepassword> {
             inputField1(
                 controller1: newPass,
                 hintText: 'New password',
+                read: false,
                 validators: passwordValidator,
                 keyInputType: TextInputType.visiblePassword,
                 prefixIcon: const Icon(
@@ -64,6 +66,7 @@ class _ChangepasswordState extends State<Changepassword> {
             inputField1(
                 controller1: confirmPass,
                 hintText: 'Confirm password',
+                read: false,
                 validators: passwordValidator,
                 keyInputType: TextInputType.visiblePassword,
                 prefixIcon: const Icon(

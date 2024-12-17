@@ -45,6 +45,7 @@ class _ForgetpasswordState extends State<Forgetpassword> {
                           ),
                           inputField1(
                               controller1: forgetMail,
+                              read: false,
                               hintText: 'Email Address',
                               validators: emailValidator,
                               prefixIcon: const Icon(

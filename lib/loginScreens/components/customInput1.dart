@@ -9,12 +9,14 @@ class inputField1 extends StatelessWidget {
   final Icon? suffixIcon;
   final String? Function(String?)? validators;
   final TextInputType? keyInputType;
+  final bool read;
   const inputField1(
       {super.key,
       required this.controller1,
       this.hintText,
       this.labelText,
       required this.obscureText,
+      required this.read,
       this.prefixIcon,
       this.suffixIcon,
       this.validators,
@@ -26,6 +28,7 @@ class inputField1 extends StatelessWidget {
       controller: controller1,
       obscureText: obscureText,
       validator: validators,
+      readOnly: read,
       keyboardType: keyInputType,
       decoration: InputDecoration(
           hintText: hintText,

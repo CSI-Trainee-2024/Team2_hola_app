@@ -42,6 +42,7 @@ class _OtpPageState extends State<OtpPage> {
                           ),
                           inputField1(
                               controller1: otpController,
+                              read: false,
                               hintText: 'Enter OTP',
                               //validators: ,
                               keyInputType: TextInputType.number,

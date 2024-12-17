@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hola_app/subScreen/HomeSubScreen/comment/comment.dart';
 import 'package:hola_app/subScreen/profile/userProfileApi.dart';
@@ -51,6 +52,10 @@ class _ProfilePostState extends State<ProfilePost>
                         return ListView.builder(
                             itemCount: userPostList.length,
                             itemBuilder: (context, index) {
+                              precacheImage(
+                                  NetworkImage(
+                                      userPostList[index].media.toString()),
+                                  context);
                               return SingleChildScrollView(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 20),
@@ -120,13 +125,24 @@ class _ProfilePostState extends State<ProfilePost>
                                                     null &&
                                                 userPostList[index].media !=
                                                     "http://res.cloudinary.com/dy1a8nyco/image/upload/null"
-                                            ? Image.network(
-                                                userPostList[index]
+                                            ? CachedNetworkImage(
+                                                imageUrl: userPostList[index]
                                                     .media
                                                     .toString(),
                                                 height: 250,
                                                 width: double.infinity,
                                                 fit: BoxFit.cover,
+                                                placeholder: (context, url) =>
+                                                    const Center(
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: colors.mainColor,
+                                                  ),
+                                                ),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        const Icon(Icons.error),
+                                                useOldImageOnUrlChange: true,
                                               )
                                             : Container(
                                                 color: colors.greyColor,

@@ -43,6 +43,7 @@ dependencies:
   chewie: ^1.8.5
   shared_preferences: ^2.3.3
   web_socket_channel: ^3.0.1
+  cached_network_image: ^3.4.1
 
 
 dev_dependencies:

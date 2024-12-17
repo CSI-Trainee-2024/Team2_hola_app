@@ -175,6 +175,8 @@ class _profileScreenState extends State<profileScreen> {
                           ),
                           gestureDetector(
                             onPressed: () {
+                              geteditProfile(
+                                  "Naman Singh", "This is the bio of me");
                             },
                             textData: 'Share profile',
                             isColored: false,

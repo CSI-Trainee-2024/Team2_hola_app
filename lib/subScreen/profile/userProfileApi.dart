@@ -3,6 +3,7 @@ import 'package:hola_app/loginScreens/components/sharedPref.dart';
 import 'package:hola_app/subScreen/profile/profileModel/followersModel.dart';
 import 'package:hola_app/subScreen/profile/profileModel/userProfileModel.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 var userUrl = "https://hola-project.onrender.com";
 var profile;
@@ -10,6 +11,7 @@ var userPostdata;
 var userFollowerData;
 var userFollowingData;
 var uniqueId;
+var editProfileData;
 List<userPostModel> userPostList = [];
 List<FollowersList> userFollowes = [];
 List<FollowersList> userFollowing = [];
@@ -111,5 +113,31 @@ Future<List<FollowersList>> getFollowing() async {
     return userFollowing;
   } else {
     throw Exception('Failed to load data : $response');
+  }
+}
+
+// edit profile
+Future<void> geteditProfile(username, bio) async {
+  Map<String, String?> tokens = await getTokens();
+  String? editToken = tokens['accessToken'];
+  try {
+    Response response = await http.put(
+        Uri.parse('$userUrl/api/accounts/profile/edit/'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $editToken'
+        },
+        body: jsonEncode({
+          'username': username,
+          'bio': bio,
+        }));
+    if (response.statusCode == 200) {
+      editProfileData = jsonDecode(response.body.toString());
+      print(editProfileData);
+    } else {
+      print('failed to edit profile: ${response.statusCode}');
+    }
+  } catch (e) {
+    print(e.toString());
   }
 }

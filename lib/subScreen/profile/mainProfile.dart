@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hola_app/subScreen/api/allpostApi.dart';
 import 'package:hola_app/subScreen/profile/userProfileApi.dart';
 import 'package:hola_app/themes/colors.dart';
 

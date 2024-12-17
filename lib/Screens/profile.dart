@@ -47,7 +47,7 @@ class _profileScreenState extends State<profileScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("LOading"),
+                    Text("Loading..."),
                     SizedBox(
                       height: 20,
                     ),
@@ -85,7 +85,7 @@ class _profileScreenState extends State<profileScreen> {
                           backgroundImage: profile['profile_photo'] != null &&
                                   profile['profile_photo'].isNotEmpty
                               ? NetworkImage(
-                                  profile['profile_photo'].toString())
+                                  "https://res.cloudinary.com/dy1a8nyco/${profile['profile_photo']}")
                               : const AssetImage('assets/images/userImage.png')
                           // NetworkImage(
                           //     profile['profile_photo']?.toString() ??
@@ -104,14 +104,15 @@ class _profileScreenState extends State<profileScreen> {
                         scrollDirection: Axis.horizontal,
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width,
-                          height: 100,
+                          height: 120,
                           child: ListView.separated(
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return Row(
                                   children: [
-                                    const SizedBox(
-                                      width: 35,
+                                    SizedBox(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.1,
                                     ),
                                     InkWell(
                                       onTap: () {
@@ -141,8 +142,9 @@ class _profileScreenState extends State<profileScreen> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 35,
+                                    SizedBox(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.1,
                                     ),
                                   ],
                                 );
@@ -174,10 +176,7 @@ class _profileScreenState extends State<profileScreen> {
                             isColored: false,
                           ),
                           gestureDetector(
-                            onPressed: () {
-                              geteditProfile(
-                                  "Naman Singh", "This is the bio of me");
-                            },
+                            onPressed: () {},
                             textData: 'Share profile',
                             isColored: false,
                             textStyle: textTheme.apptextTheme.labelLarge,

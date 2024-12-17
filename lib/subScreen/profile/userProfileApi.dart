@@ -12,6 +12,8 @@ var userFollowerData;
 var userFollowingData;
 var uniqueId;
 var editProfileData;
+var editUsername;
+var editBio;
 List<userPostModel> userPostList = [];
 List<FollowersList> userFollowes = [];
 List<FollowersList> userFollowing = [];
@@ -32,7 +34,7 @@ Future<void> userProfile() async {
 
     if (response.statusCode == 200) {
       profile = jsonDecode(response.body.toString());
-      print(profile);
+      //print(profile);
     } else {
       print("UserResonse status code :$response");
     }
@@ -57,7 +59,7 @@ Future<List<userPostModel>> userPosts() async {
         'Authorization': 'Bearer $accessToken'
       });
   userPostdata = jsonDecode(response.body.toString());
-  print(userPostdata);
+  //print(userPostdata);
   if (response.statusCode == 200) {
     userPostList.clear();
     for (Map i in userPostdata) {
@@ -117,7 +119,7 @@ Future<List<FollowersList>> getFollowing() async {
 }
 
 // edit profile
-Future<void> geteditProfile(username, bio) async {
+Future<void> geteditProfile(username, bio, profilePicture) async {
   Map<String, String?> tokens = await getTokens();
   String? editToken = tokens['accessToken'];
   try {
@@ -130,10 +132,13 @@ Future<void> geteditProfile(username, bio) async {
         body: jsonEncode({
           'username': username,
           'bio': bio,
+          'profile_photo': profilePicture
         }));
     if (response.statusCode == 200) {
       editProfileData = jsonDecode(response.body.toString());
       print(editProfileData);
+      editUsername = editProfileData['username'];
+      editBio = editProfileData['bio'];
     } else {
       print('failed to edit profile: ${response.statusCode}');
     }
